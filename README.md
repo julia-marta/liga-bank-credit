@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# Лига Банк: кредитный калькулятор
+
+:rocket: Проект выполняется в Акселераторе HTML Academy.
+
+___
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
