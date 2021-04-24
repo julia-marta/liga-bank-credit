@@ -1,0 +1,30 @@
+// viewport
+
+$mobile-width: 320px;
+$max-mobile-width: 767px;
+$tablet-width: 768px;
+$max-tablet-width: 1023px;
+$desktop-width: 1024px;
+$max-content-width: 1366px;
+
+// retina
+
+$retina-dpi: 144dpi;
+$retina-dppx: 1.5dppx;
+
+// colors
+
+$main-background: #FFFFFF;
+$main-text: #1F1E25;
+$background: #F6F7FF;
+$button: #2C36F2;
+$subtitle-text: #E0E1EA;
+$pale-text: #707C87;
+$input-text: #000000;
+$border: #C1C2CA;
+$shadow: rgba(#000000, .2);
+
+// fonts
+
+$medium: 500;
+$bold: 700;

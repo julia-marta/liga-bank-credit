@@ -1,0 +1,14 @@
+body {
+  @include indents-none;
+  @include font-weight;
+  font-family: "Roboto", "Arial", sans-serif;
+  font-size: 16px;
+  line-height: 18px;
+  color: $main-text;
+  background-color: $main-background;
+}
+
+a {
+  color: $main-text;
+  text-decoration: none;
+}
