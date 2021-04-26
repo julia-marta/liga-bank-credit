@@ -1,0 +1,83 @@
+@keyframes fade-in {
+  from {
+    transform: scale(0.5);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: $shadow;
+  z-index: 10;
+}
+
+.modal__window {
+  position: relative;
+  box-sizing: border-box;
+  width: 544px;
+  height: 493px;
+  padding: 55px;
+  background-color: $background;
+  border: 4px solid $button;
+  animation: fade-in 0.5s;
+}
+
+.modal__header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 38.5px;
+}
+
+.modal__close {
+  @include indents-none;
+  position: relative;
+  width: 18px;
+  height: 18px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: transform 0.5s;
+
+  &:hover,
+  &:focus {
+    transform: rotate(90deg);
+  }
+}
+
+@media (max-width: $max-tablet-width) {
+  .modal__window {
+    width: 678px;
+    height: 493px;
+    padding: 55px 83px;
+  }
+}
+
+@media (max-width: $max-mobile-width) {
+  .modal__window {
+    width: 290px;
+    height: 455px;
+    padding: 45px 10px;
+  }
+
+  .modal__header {
+
+    margin-bottom: 29px;
+  }
+
+  .modal__close svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+

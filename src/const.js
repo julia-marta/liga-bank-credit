@@ -31,7 +31,21 @@ export const SOCIAL_LINKS = [{
 }];
 
 export const IconType = {
-
+  LOGIN: {
+    name: `login`,
+    width: 20,
+    height: 22,
+  },
+  PASSWORD: {
+    name: `password`,
+    width: 22,
+    height: 12,
+  },
+  CLOSE: {
+    name: `close`,
+    width: 18,
+    height: 18,
+  },
   FACEBOOK: {
     name: `facebook`,
     width: 9,
@@ -41,11 +55,6 @@ export const IconType = {
     name: `instagram`,
     width: 16,
     height: 16,
-  },
-  LOGIN: {
-    name: `login`,
-    width: 20,
-    height: 22,
   },
   MOBILE: {
     name: `mobile-phone`,
@@ -78,4 +87,14 @@ export const Viewport = {
     min: 768,
     max: 1023
   }
+};
+
+export const Key = {
+  ESC: `Esc`,
+  ESCAPE: `Escape`
+};
+
+export const LoginInput = {
+  LOGIN: `login`,
+  PASSWORD: `password`
 };

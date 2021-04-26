@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import Icon from "../icon/icon";
 import MenuItem from "../menu-item/menu-item";
 import {HEADER_MENU_ITEMS, IconType} from "../../const";
 
-const Navigation = ({isCompactMenu, isMobileMenu, isMenuOpened}) => {
+const Navigation = ({isCompactMenu, isMobileMenu, isMenuOpened, onLoginButtonClick}) => {
 
   return (
     <nav className={`navigation ${isMobileMenu ? isMenuOpened ? `navigation--opened` : `navigation--closed` : ``}`}>
@@ -15,7 +16,7 @@ const Navigation = ({isCompactMenu, isMobileMenu, isMenuOpened}) => {
       <ul className="navigation__list navigation__list--user">
         <li className="navigation__item navigation__item--user">
           {/* eslint-disable-next-line */}
-          <a className="navigation__link navigation__link--user" href="#">
+          <a className="navigation__link navigation__link--user" href="#" onClick={onLoginButtonClick}>
             <Icon icon={IconType.LOGIN} />
             {isCompactMenu || !isMenuOpened ? `` : <span>Войти в Интернет-банк</span>}
           </a>
@@ -23,6 +24,13 @@ const Navigation = ({isCompactMenu, isMobileMenu, isMenuOpened}) => {
       </ul>
     </nav>
   );
+};
+
+Navigation.propTypes = {
+  isCompactMenu: PropTypes.bool.isRequired,
+  isMobileMenu: PropTypes.bool.isRequired,
+  isMenuOpened: PropTypes.bool.isRequired,
+  onLoginButtonClick: PropTypes.func.isRequired,
 };
 
 export default Navigation;

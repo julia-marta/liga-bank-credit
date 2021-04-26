@@ -1,19 +1,20 @@
 import React from 'react';
 import PropTypes from "prop-types";
 
-const Logo = ({name, isMobileLogo}) => {
+const Logo = ({name, type}) => {
 
   return (
     <div className={`${name}__logo`}>
       {/* eslint-disable-next-line */}
       <a href="#">
-        <img src={isMobileLogo ? `img/mobile_logo.svg` : `img/logo.svg`} width="150" height="27" alt="Логотип Лига Банка"/>
+        <img src={type ? `img/${type}_logo.svg` : `img/logo.svg`} width="150" height="27" alt="Логотип Лига Банка"/>
       </a>
     </div>
   );
 };
 Logo.propTypes = {
   name: PropTypes.string.isRequired,
+  type: PropTypes.string,
 };
 
 export default Logo;
