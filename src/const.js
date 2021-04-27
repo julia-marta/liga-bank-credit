@@ -8,7 +8,7 @@ export const SLIDES = [{
   button: {
     text: `Рассчитать кредит`,
     className: `button--light`,
-    link: `calculator`
+    link: `#calculator`
     }
   },
   {
@@ -21,7 +21,7 @@ export const SLIDES = [{
   button: {
     text: `Найти отделение`,
     className: ``,
-    link: `addresses`
+    link: `#addresses`
   }
 }];
 

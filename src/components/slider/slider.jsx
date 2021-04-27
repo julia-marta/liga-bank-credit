@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useCallback} from 'react';
+import {useSwipeable} from "react-swipeable";
 import Slide from "../slide/slide";
 import {SLIDES, SLIDER_INTERVAL, SLIDER_TRANSITION, SLIDER_TRANSLATE} from "../../const";
 
@@ -14,19 +15,16 @@ const Slider = () => {
 
   const {activeSlide, direction, translate, transition, slides} = current;
 
-  const scrollSlideForward = useCallback(
-    () => {
+  const scrollSlideForward = () => {
       return setCurrent({
         ...current,
         activeSlide: activeSlide === 3 ? 1 : activeSlide + 1,
         translate: translate - SLIDER_TRANSLATE,
         transition: SLIDER_TRANSITION,
       })
-    }, [activeSlide, translate, current]
-  );
+    };
 
-  const scrollSlideBackwards = useCallback(
-    () => {
+  const scrollSlideBackwards = () => {
         return setCurrent({
           ...current,
           translate: translate + SLIDER_TRANSLATE,
@@ -34,8 +32,7 @@ const Slider = () => {
           activeSlide: activeSlide === 1 ? 3 : activeSlide - 1,
           direction: -1
         })
-    }, [activeSlide, translate, current]
-  );
+    };
 
   const handleSliderTransition = useCallback(
     () => {
@@ -65,12 +62,19 @@ const Slider = () => {
     return () => clearInterval(timer);
   });
 
+  const handlers = useSwipeable({
+    onSwipedLeft: () => scrollSlideForward(),
+    onSwipedRight: () => scrollSlideBackwards(),
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true
+  });
+
   return (
     <section className="slider">
       <h2 className="visually-hidden">Слайдер с промо-предложениями</h2>
       <div className="slider__wrapper"
       style={{transform: `translateX(${translate}px)`, transition: `transform ease-out ${transition}s`}}
-      onTransitionEnd={handleSliderTransition}>
+      onTransitionEnd={handleSliderTransition} {...handlers}>
         {slides.map((slide, index) => {
             return <Slide key={index + 1} index={slide.index} text={slide.text} button={slide.button} />
           })}
