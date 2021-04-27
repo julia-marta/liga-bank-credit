@@ -12,7 +12,7 @@ const Modal = ({isActive, onCloseButtonClick}) => {
         <h2 className="visually-hidden">Вход в интернет-банк</h2>
         <div className="modal__window">
           <div className="modal__header">
-            <img src="img/modal_logo.svg" width="151" height="31" alt="Логотип интернет-банка Лига Банка"/>
+            <img src="svg/modal_logo.svg" width="151" height="31" alt="Логотип интернет-банка Лига Банка"/>
             <button type="button" className="modal__close" aria-label="Закрыть окно" onClick={onCloseButtonClick}>
               <Icon icon={IconType.CLOSE} />
             </button>

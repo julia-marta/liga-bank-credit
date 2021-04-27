@@ -7,14 +7,14 @@ const Logo = ({name, type}) => {
     <div className={`${name}__logo`}>
       {/* eslint-disable-next-line */}
       <a href="#">
-        <img src={type ? `img/${type}_logo.svg` : `img/logo.svg`} width="150" height="27" alt="Логотип Лига Банка"/>
+        <img src={type ? `svg/${type}_logo.svg` : `svg/logo.svg`} width="150" height="27" alt="Логотип Лига Банка"/>
       </a>
     </div>
   );
 };
 Logo.propTypes = {
   name: PropTypes.string.isRequired,
-  type: PropTypes.string,
+  type: PropTypes.string
 };
 
 export default Logo;

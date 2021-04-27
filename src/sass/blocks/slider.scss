@@ -1,0 +1,36 @@
+.slider {
+  position: relative;
+  overflow: hidden;
+}
+
+.slider__wrapper {
+  display: flex;
+  justify-content: flex-start;
+  width: 300vw;
+}
+
+.slider__dots {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 40px;
+  margin: 0 auto;
+}
+
+.slider__dot {
+  display: block;
+  width: 8px;
+  height: 8px;
+  background-color: $dot;
+  border-radius: 50%;
+  transition: all 0.7s;
+
+  &--active {
+    background-color: $background;
+  }
+}

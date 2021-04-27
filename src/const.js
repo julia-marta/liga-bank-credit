@@ -2,6 +2,33 @@ export const HEADER_MENU_ITEMS = [`Услуги`, `Рассчитать кред
 
 export const FOOTER_MENU_ITEMS = [`Услуги`, `Рассчитать кредит`, `Контакты`, `Задать вопрос`];
 
+export const SLIDES = [{
+  index: 1,
+  text: `Кредиты на любой случай`,
+  button: {
+    text: `Рассчитать кредит`,
+    className: `button--light`,
+    link: `calculator`
+    }
+  },
+  {
+  index: 2,
+  text: `Ваша уверенность в завтрашнем дне`,
+  },
+  {
+  index: 3,
+  text: `Всегда рядом`,
+  button: {
+    text: `Найти отделение`,
+    className: ``,
+    link: `addresses`
+  }
+}];
+
+export const SLIDER_INTERVAL = 4000;
+export const SLIDER_TRANSLATE = window.innerWidth;
+export const SLIDER_TRANSITION = 0.7;
+
 export const CONTACTS = [{
   type: `mobile`,
   number: `*0904`,
