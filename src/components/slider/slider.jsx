@@ -1,9 +1,10 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import {useSwipeable} from "react-swipeable";
+import PropTypes from "prop-types";
 import Slide from "../slide/slide";
 import {SLIDES, SLIDER_INTERVAL, SLIDER_TRANSITION, SLIDER_TRANSLATE} from "../../const";
 
-const Slider = () => {
+const Slider = ({isSwipeable}) => {
 
   const [current, setCurrent] = useState({
     activeSlide: 1,
@@ -63,8 +64,8 @@ const Slider = () => {
   });
 
   const handlers = useSwipeable({
-    onSwipedLeft: () => scrollSlideForward(),
-    onSwipedRight: () => scrollSlideBackwards(),
+    onSwipedLeft: () => isSwipeable ? scrollSlideForward() : ``,
+    onSwipedRight: () => isSwipeable ? scrollSlideBackwards() : ``,
     preventDefaultTouchmoveEvent: true,
     trackMouse: true
   });

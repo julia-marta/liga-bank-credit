@@ -1,16 +1,12 @@
 import React, {useState, useCallback, useEffect} from 'react';
-import {useMediaQuery} from 'react-responsive';
 import PropTypes from "prop-types";
 import Logo from "../logo/logo";
 import Navigation from "../navigation/navigation";
-import {Viewport} from "../../const";
 
-const Header = ({onLoginButtonClick}) => {
+
+const Header = ({onLoginButtonClick, isMobile, isTablet}) => {
 
   const [isMenuOpened, setMenuOpened] = useState(true);
-
-  const isTablet = useMediaQuery({minWidth: Viewport.TABLET.min, maxWidth: Viewport.TABLET.max});
-  const isMobile = useMediaQuery({maxWidth: Viewport.MOBILE.max});
 
   useEffect(() => {
     if (isMobile) {
@@ -53,6 +49,8 @@ const Header = ({onLoginButtonClick}) => {
 
 Header.propTypes = {
   onLoginButtonClick: PropTypes.func.isRequired,
+  isMobile: PropTypes.bool.isRequired,
+  isTablet: PropTypes.bool.isRequired,
 };
 
 export default Header;
