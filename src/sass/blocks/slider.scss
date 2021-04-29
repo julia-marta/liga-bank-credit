@@ -10,29 +10,8 @@
 }
 
 .slider__dots {
-  position: absolute;
   bottom: 40px;
-  left: 0;
-  right: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
   width: 40px;
-  margin: 0 auto;
-}
-
-.slider__dot {
-  display: block;
-  width: 8px;
-  height: 8px;
-  background-color: $dot;
-  border-radius: 50%;
-  transition: all 0.7s;
-
-  &--active {
-    background-color: $background;
-  }
 }
 
 @media (max-width: $max-tablet-width) {
@@ -45,10 +24,5 @@
   .slider__dots {
     bottom: 10px;
     width: 30px;
-  }
-
-  .slider__dot {
-    width: 6px;
-    height: 6px;
   }
 }

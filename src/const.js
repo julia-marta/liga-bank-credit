@@ -57,21 +57,53 @@ export const SOCIAL_LINKS = [{
   label: `Ютуб`,
 }];
 
+export const Service = {
+  DEPOSITS: {
+    name: `Вклады`,
+    title: `Вклады Лига Банка – это выгодная инвестиция в свое будущее`,
+    features: [`Проценты по вкладам до 7%`, `Разнообразные условия`, `Возможность ежемесячной капитализации или вывод процентов на банковскую карту`],
+    button: true,
+  },
+  CREDITS: {
+    name: `Кредиты`,
+    title: `Лига Банк выдает кредиты \n под любые цели`,
+    features: [`Ипотечный кредит`, `Автокредит`, `Потребительский кредит`],
+    subtitle: {
+      text: `Рассчитайте ежемесячный платеж \n и ставку по кредиту воспользовавшись нашим`,
+      link: `кредитным калькулятором`
+    },
+    button: false,
+  },
+  INSURANCE: {
+    name: `Страхование`,
+    title: `Лига Страхование — застрахуем все что захотите`,
+    features: [`Автомобильное страхование`, `Страхование жизни и здоровья`, `Страхование недвижимости`],
+    button: true,
+  },
+  ONLINE: {
+    name: `Онлайн-сервисы`,
+    title: `Лига Банк — это огромное количество онлайн-сервисов для вашего удобства`,
+    features: [`Мобильный банк, \n который всегда под рукой`, `Приложение Лига-проездной позволит \n вам оплачивать билеты по всему миру`],
+    button: true,
+  }
+};
+
 export const IconType = {
-  LOGIN: {
-    name: `login`,
-    width: 20,
-    height: 22,
-  },
-  PASSWORD: {
-    name: `password`,
-    width: 22,
-    height: 12,
-  },
+
   CLOSE: {
     name: `close`,
     width: 18,
     height: 18,
+  },
+  CREDITS: {
+    name: `credits`,
+    width: 34,
+    height: 30,
+  },
+  DEPOSITS: {
+    name: `deposits`,
+    width: 34,
+    height: 33,
   },
   FACEBOOK: {
     name: `facebook`,
@@ -83,15 +115,40 @@ export const IconType = {
     width: 16,
     height: 16,
   },
+  INSURANCE: {
+    name: `insurance`,
+    width: 28,
+    height: 34,
+  },
+  LOGIN: {
+    name: `login`,
+    width: 20,
+    height: 22,
+  },
   MOBILE: {
     name: `mobile-phone`,
     width: 10,
     height: 16,
   },
+  ONLINE: {
+    name: `online`,
+    width: 20,
+    height: 34,
+  },
+  PASSWORD: {
+    name: `password`,
+    width: 22,
+    height: 12,
+  },
   PHONE: {
     name: `phone`,
     width: 16,
     height: 16,
+  },
+  TICK: {
+    name: `tick`,
+    width: 13,
+    height: 10,
   },
   TWITTER: {
     name: `twitter`,
@@ -102,6 +159,25 @@ export const IconType = {
     name: `youtube`,
     width: 16,
     height: 13,
+  }
+};
+
+export const Tab = {
+  DEPOSITS: {
+    index: 1,
+    name: `deposits`,
+  },
+  CREDITS: {
+    index: 2,
+    name: `credits`,
+  },
+  INSURANCE: {
+    index: 3,
+    name: `insurance`,
+  },
+  ONLINE: {
+    index: 4,
+    name: `online`,
   }
 };
 

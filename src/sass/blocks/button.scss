@@ -1,6 +1,7 @@
 .button {
   @include font-weight($medium);
   box-sizing: border-box;
+  display: block;
   text-align: center;
   font-family: inherit;
   color: $background;

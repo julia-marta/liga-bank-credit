@@ -2,6 +2,7 @@ import React, {useState, useEffect, useCallback} from 'react';
 import {useSwipeable} from "react-swipeable";
 import PropTypes from "prop-types";
 import Slide from "../slide/slide";
+import Dot from "../dot/dot";
 import {SLIDES, SLIDER_INTERVAL, SLIDER_TRANSITION, SLIDER_TRANSLATE} from "../../const";
 
 const Slider = ({isSwipeable}) => {
@@ -80,13 +81,17 @@ const Slider = ({isSwipeable}) => {
             return <Slide key={index + 1} index={slide.index} text={slide.text} button={slide.button} />
           })}
       </div>
-      <div className="slider__dots">
+      <div className="slider__dots dots">
         {slides.map((_slide, index) => {
-          return <span key={index + 1} className={`slider__dot ${index + 1 === activeSlide ? `slider__dot--active` : ``}`} />
+          return <Dot key={index + 1} isActive={index + 1 === activeSlide} isLight={activeSlide !== 3} />
         })}
       </div>
     </section>
   );
+};
+
+Slider.propTypes = {
+  isSwipeable: PropTypes.bool.isRequired,
 };
 
 export default Slider;
