@@ -21,7 +21,7 @@ export const SLIDES = [{
   button: {
     text: `Найти отделение`,
     className: ``,
-    link: `#addresses`
+    link: `#branches`
   }
 }];
 
@@ -88,8 +88,29 @@ export const Service = {
   }
 };
 
-export const IconType = {
+export const SectionType = {
+  CALCULATOR: {
+    name: `calculator`,
+    title: `Кредитный калькулятор`
+  },
+  BRANCHES: {
+    name: `branches`,
+    title: `Отделения Лига Банка`
+  }
+};
 
+export const CreditPurpose = {
+  MORTGAGE: {
+    type: `mortgage`,
+    name: `Ипотечное кредитование`
+  },
+  AUTO: {
+    type: `auto`,
+    name: `Автомобильное кредитование`
+  }
+};
+
+export const IconType = {
   CLOSE: {
     name: `close`,
     width: 18,
@@ -144,6 +165,11 @@ export const IconType = {
     name: `phone`,
     width: 16,
     height: 16,
+  },
+  SELECT: {
+    name: `select`,
+    width: 18,
+    height: 11,
   },
   TICK: {
     name: `tick`,

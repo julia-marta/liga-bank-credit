@@ -46,15 +46,15 @@ const Login = ({userData, saveUser, onSubmitForm}) => {
   );
 
     return (
-        <form action="#" className="modal__form login" onSubmit={handleFormSubmit}>
+        <form action="#" className="modal__form login form" onSubmit={handleFormSubmit}>
           <div className="login__wrapper">
-            <label className="login__label" htmlFor={LOGIN}>Логин</label>
-            <input ref={inputLogin} className="login__input" type="text" id={LOGIN} name={LOGIN} 
+            <label className="form__label" htmlFor={LOGIN}>Логин</label>
+            <input ref={inputLogin} className="form__input" type="text" id={LOGIN} name={LOGIN} 
             value={userData[LOGIN]} onChange={handleFieldChange} required />
           </div>
           <div className="login__wrapper login__wrapper--password">
-            <label className="login__label" htmlFor={PASSWORD}>Пароль</label>
-            <input className="login__input" type={isPasswordVisible ? `text` : `password`} id={PASSWORD} name={PASSWORD}
+            <label className="form__label" htmlFor={PASSWORD}>Пароль</label>
+            <input className="form__input" type={isPasswordVisible ? `text` : `password`} id={PASSWORD} name={PASSWORD}
             value={userData[PASSWORD]} onChange={handleFieldChange} required />
             <button className="login__show-password" type="button" aria-label="Показать пароль"
             onMouseDown={handleShowPassword} onMouseUp={handleHidePassword} onMouseLeave={handleHidePassword}
@@ -63,7 +63,7 @@ const Login = ({userData, saveUser, onSubmitForm}) => {
             </button>
           </div>
           {/* eslint-disable-next-line */}
-          <a className="login__link" href="#">Забыли пароль?</a>
+          <a className="login__password-link" href="#">Забыли пароль?</a>
           <button className="login__submit button" type="submit" >Войти</button>
         </form>
       );

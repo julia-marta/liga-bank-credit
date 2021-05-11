@@ -12,32 +12,6 @@
   }
 }
 
-.login__label {
-  display: block;
-  margin-bottom: 6px;
-  color: $label-text;
-}
-
-.login__input {
-  @include indents-none;
-  box-sizing: border-box;
-  display: block;
-  width: 100%;
-  min-height: 60px;
-  padding: 11px;
-  font: inherit;
-  line-height: 34px;
-  color: $input-text;
-  outline: none;
-  background-color: transparent;
-  border: 1px solid $main-text;
-  border-radius: 4px;
-
-  &:focus {
-    box-shadow:inset 0 0 2px 1px $button;
-  }
-}
-
 .login__show-password {
   box-sizing: border-box;
   position: absolute;
@@ -56,7 +30,7 @@
   }
 }
 
-.login__link {
+.login__password-link {
   align-self: flex-end;
   margin-top: 5.5px;
   margin-bottom: 25px;
@@ -79,7 +53,7 @@
     order: 1;
 
     &--password {
-        order: 2;
+      order: 2;
       margin-top: 22px;
       margin-bottom: 30px;
     }
@@ -95,7 +69,7 @@
     font-size: 14px;
   }
 
-  .login__link {
+  .login__password-link {
     order: 4;
     align-self: center;
     margin-top: 11px;

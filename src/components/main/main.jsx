@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Slider from "../slider/slider";
 import Services from "../services/services";
 import Calculator from "../calculator/calculator";
+import Branches from "../branches/branches";
 
 const Main = ({isMobile, isTablet}) => {
 
@@ -12,6 +13,7 @@ const Main = ({isMobile, isTablet}) => {
       <Slider isSwipeable={isMobile || isTablet} />
       <Services isSwipeable={isMobile || isTablet} />
       <Calculator />
+      <Branches />
     </main>
   );
 };

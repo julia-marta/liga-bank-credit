@@ -68,6 +68,11 @@
 
   .navigation__link {
     padding: 5.5px 0;
+
+    &--user {
+      height: 22px;
+      padding: 0;
+    }
   }
 }
 
@@ -136,6 +141,7 @@
     padding-left: 15px;
 
     &--user {
+      height: auto;
       padding-left: 45px;
     }
   }

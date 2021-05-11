@@ -1,0 +1,34 @@
+.form__label {
+  display: block;
+  margin-bottom: 6px;
+  color: $label-text;
+}
+
+.form__input {
+  @include indents-none;
+  @include font-weight($medium);
+  position: relative;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  min-height: 60px;
+  padding: 12px 23px 11px;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: 34px;
+  color: $input-text;
+  outline: none;
+  background-color: transparent;
+  border: 1px solid $main-text;
+  border-radius: 4px;
+
+  &:focus {
+    box-shadow:inset 0 0 2px 1px $button;
+  }
+}
+
+@media (max-width: $max-mobile-width) {
+  .form__input {
+    padding: 12px 14px 11px; 
+  }
+}

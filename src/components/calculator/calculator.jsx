@@ -1,14 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
+import Section from "../section/section";
+import Step1 from "../step-1/step-1";
+import {SectionType} from "../../const";
 
 const Calculator = () => {
 
-  return (
-    <section id="calculator" className="calculator">
-      <div className="calculator__wrapper container">
-        <h2 className="calculator__title">Кредитный калькулятор</h2>
+  const [purpose, setPurpose] = useState(false);
+  // const [isRegistrationOpened, setRegistrationOpened] = useState(false);
 
-      </div>
-    </section>
+  return (
+    <Section name={SectionType.CALCULATOR.name} title={SectionType.CALCULATOR.title}>
+      <form className="calculator form">
+        <div className="calculator__wrapper">
+          <Step1 creditPurpose={purpose} changeCreditPurpose={setPurpose} />
+          {purpose ? `показывается шаг 2` : ``}
+        </div>
+      </form>
+    </Section>
   );
 };
 
