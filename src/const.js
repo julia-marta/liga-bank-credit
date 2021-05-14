@@ -111,6 +111,11 @@ export const CreditPurpose = {
 };
 
 export const IconType = {
+  CHECKBOX: {
+    name: `checkbox`,
+    width: 8,
+    height: 6,
+  },
   CLOSE: {
     name: `close`,
     width: 18,
@@ -223,7 +228,62 @@ export const Key = {
   ESCAPE: `Escape`
 };
 
-export const LoginInput = {
+export const InputControl = {
+  DECREASE: `decrease`,
+  INCREASE: `increase`,
+  STEP: 100000
+};
+
+export const ModalFormInput = {
   LOGIN: `login`,
   PASSWORD: `password`
 };
+
+export const CalculatorStage = {
+  ONE: {
+    name: `one`,
+    title: `Шаг 1. Цель кредита`
+  },
+  TWO: {
+    name: `two`,
+    title: `Шаг 2. Введите параметры кредита`
+  }
+};
+
+export const CalculatorFormField = {
+  SELECT: {
+    legend: `Выбор типа кредита`,
+    name: `select`,
+    defaultValue: `Выберите цель кредита`
+  },
+  PROPERTY: {
+    legend: `Ввод стоимости недвижимости`,
+    name: `property`,
+    label: `Стоимость недвижимости`,
+    suffix: [`рубль`, `рубля`, `рублей`],
+    min: 1200000,
+    max: 25000000,
+  },
+  INITIAL_FEE: {
+    legend: `Ввод первоначального взноса`,
+    name: `initial`,
+    label: `Первоначальный взнос`,
+    suffix: [`рубль`, `рубля`, `рублей`],
+  },
+  CREDIT_TERM: {
+    legend: `Ввод срока кредитования`,
+    name: `term`,
+    label: `Срок кредитования`,
+    suffix: [`год`, `года`, `лет`],
+    min: 5,
+    max: 30,
+  },
+  MATERNAL_CAPITAL: {
+    legend: `Использование материнского капитала`,
+    name: `maternal`,
+    label: `Использовать материнский капитал`,
+    value: 470000,
+  }
+};
+
+

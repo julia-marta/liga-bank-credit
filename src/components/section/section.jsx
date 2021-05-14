@@ -5,7 +5,7 @@ const Section = ({name, title, children}) => {
 
   return (
     <section id={name} className="section">
-      <div className={`section__wrapper section__wrapper--${name} container`}>
+      <div className={`section__wrapper ${name} container`}>
         <h2 className="section__title">{title}</h2>
         {children}
       </div>

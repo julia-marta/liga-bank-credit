@@ -55,6 +55,13 @@
   }
 }
 
+.modal__form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding: 0 1px;
+}
+
 @media (max-width: $max-tablet-width) {
   .modal__window {
     width: 678px;
@@ -71,7 +78,6 @@
   }
 
   .modal__header {
-
     margin-bottom: 29px;
   }
 
@@ -79,5 +85,8 @@
     width: 14px;
     height: 14px;
   }
-}
 
+  .modal__form {
+    padding: 0 6px;
+  }
+}

@@ -1,9 +1,9 @@
-import React, {useState, useCallback} from 'react';
+import React, {Fragment, useState, useCallback} from 'react';
 import PropTypes from 'prop-types';
 import Icon from "../icon/icon";
 import {IconType, CreditPurpose} from "../../const";
 
-const Step1 = ({creditPurpose, changeCreditPurpose}) => {
+const CalculatorSelect = ({creditPurpose, defaultValue, onChangeSelect}) => {
 
   const [isSelectOpened, setSelectOpened] = useState(false);
 
@@ -24,41 +24,39 @@ const Step1 = ({creditPurpose, changeCreditPurpose}) => {
   const handleSelectChange = useCallback(
     (evt) => {
         evt.preventDefault();
-        changeCreditPurpose(evt.target.id);
+        onChangeSelect(evt.target.id);
         setSelectOpened(false);
-    }, [changeCreditPurpose]
+    }, [onChangeSelect]
   );
 
-  const selectedValue = creditPurpose ? CreditPurpose[creditPurpose.toUpperCase()].name : `Выберите цель кредита`;
+  const selectedValue = creditPurpose ? CreditPurpose[creditPurpose.toUpperCase()].name : defaultValue;
 
   return (
-    <div className="calculator__step calculator__step--1">
-      <h3 className="calculator__title">Шаг 1. Цель кредита</h3>
-       <div className="calculator__select-wrapper">
-       <button className={`form__input calculator__select ${isSelectOpened ? `calculator__select--opened` : ``}`} onClick={handleSelectClick} onBlur={handleSelectBlur}>
+      <Fragment>
+        <button className={`form__input form__select ${isSelectOpened ? `form__select--opened` : ``}`} onClick={handleSelectClick} onBlur={handleSelectBlur}>
          {selectedValue}
          <Icon icon={IconType.SELECT} />
        </button>
-       {isSelectOpened && <ul className="calculator__option-list">
+       {isSelectOpened && <ul className="form__option-list">
         {Object.keys(CreditPurpose).map((purpose, i) => (
-          <li key={i + 1} id={CreditPurpose[purpose].type} className="form__input calculator__option"
+          <li key={i + 1} id={CreditPurpose[purpose].type} className="form__input form__option"
             onMouseDown={(evt) => evt.preventDefault()} onClick={handleSelectChange}>
             {CreditPurpose[purpose].name}
           </li>
           ))}
        </ul>
       }
-      </div>
-    </div>
+      </Fragment>
   );
 };
 
-Step1.propTypes = {
+CalculatorSelect.propTypes = {
   creditPurpose: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.string
   ]).isRequired,
-  changeCreditPurpose: PropTypes.func.isRequired,
+  defaultValue: PropTypes.string.isRequired,
+  onChangeSelect: PropTypes.func.isRequired,
 }
 
-export default Step1;
+export default CalculatorSelect;

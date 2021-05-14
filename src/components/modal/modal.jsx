@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
 import PropTypes from "prop-types";
-import Login from "../login/login";
+import ModalForm from "../modal-form/modal-form";
 import Icon from "../icon/icon";
 import {IconType} from "../../const";
 
@@ -17,7 +17,7 @@ const Modal = ({isActive, onCloseButtonClick}) => {
               <Icon icon={IconType.CLOSE} />
             </button>
           </div>
-          <Login onSubmitForm={onCloseButtonClick} />
+          <ModalForm onSubmitForm={onCloseButtonClick} />
         </div>
       </section>
       }
