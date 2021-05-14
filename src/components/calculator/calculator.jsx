@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import Section from "../section/section";
+import FormFieldset from "../form-fieldset/form-fieldset";
 import CalculatorStep from "../calculator-step/calculator-step";
-import CalculatorFieldset from "../calculator-fieldset/calculator-fieldset";
 import CalculatorSelect from "../calculator-select/calculator-select";
 import CalculatorProperty from "../calculator-property/calculator-property";
 import CalculatorInitial from "../calculator-initial/calculator-initial";
@@ -27,33 +27,37 @@ const Calculator = ({propertyValue, initialFee, creditTerm, changePropertyValue,
       <form action="#" className="calculator__form form">
         <div className="calculator__steps-wrapper">
           <CalculatorStep name={ONE.name} title={ONE.title}>
-            <CalculatorFieldset name={SELECT.name} legend={SELECT.legend}>
+            <FormFieldset name={SELECT.name} legend={SELECT.legend}>
               <CalculatorSelect creditPurpose={purpose} defaultValue={SELECT.defaultValue} onChangeSelect={setPurpose} />
-            </CalculatorFieldset>
+            </FormFieldset>
           </CalculatorStep>
 
         {purpose &&
           <CalculatorStep name={TWO.name} title={TWO.title}>
-            <CalculatorFieldset name={PROPERTY.name} legend={PROPERTY.legend}>
+
+            <FormFieldset name={PROPERTY.name} legend={PROPERTY.legend}>
               <CalculatorProperty name={PROPERTY.name} label={PROPERTY.label} suffix={PROPERTY.suffix}
               minValue={PROPERTY.min} maxValue={PROPERTY.max}
               value={propertyValue} setValue={changePropertyValue} setInitialFeeValue={changeInitialFee} />
-            </CalculatorFieldset>
-            <CalculatorFieldset name={INITIAL_FEE.name} legend={INITIAL_FEE.legend}>
+            </FormFieldset>
+
+            <FormFieldset name={INITIAL_FEE.name} legend={INITIAL_FEE.legend}>
               <CalculatorInitial name={INITIAL_FEE.name} label={INITIAL_FEE.label} suffix={INITIAL_FEE.suffix}
               minValue={getInitialFee(propertyValue)} maxValue={propertyValue} value={initialFee} setValue={changeInitialFee} />
-            </CalculatorFieldset>
-            <CalculatorFieldset name={CREDIT_TERM.name} legend={CREDIT_TERM.legend}>
+            </FormFieldset>
+
+            <FormFieldset name={CREDIT_TERM.name} legend={CREDIT_TERM.legend}>
               <CalculatorTerm name={CREDIT_TERM.name} label={CREDIT_TERM.label} suffix={CREDIT_TERM.suffix}
               minValue={CREDIT_TERM.min} maxValue={CREDIT_TERM.max} value={creditTerm} setValue={changeCreditTerm} />
-            </CalculatorFieldset>
-            <CalculatorFieldset name={MATERNAL_CAPITAL.name} legend={MATERNAL_CAPITAL.legend}>
+            </FormFieldset>
+
+            <FormFieldset name={MATERNAL_CAPITAL.name} legend={MATERNAL_CAPITAL.legend}>
               <CalculatorMaternal name={MATERNAL_CAPITAL.name} label={MATERNAL_CAPITAL.label}
               value={MATERNAL_CAPITAL.value} setValue={changeMaternalCapital} />
-            </CalculatorFieldset>
+            </FormFieldset>
+
           </CalculatorStep>
         }
-
         </div>
       </form>
     </Section>

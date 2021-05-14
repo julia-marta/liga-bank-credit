@@ -1,3 +1,15 @@
 .branches {
   padding-top: 62px;
 }
+
+@media (max-width: $max-tablet-width) {
+  .branches {
+    padding-top: 35px;
+  }
+}
+
+@media (max-width: $max-mobile-width) {
+  .branches {
+    padding-top: 20px;
+  }
+}

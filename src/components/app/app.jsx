@@ -49,7 +49,7 @@ const App = () => {
   return (
     <Fragment>
       <Header onLoginButtonClick={handleModalOpening} isMobile={isMobile} isTablet={isTablet} />
-      <Modal isActive={isModalActive} onCloseButtonClick={handleModalClosing} />
+      <Modal isActive={isModalActive} isMobile={isMobile} onCloseButtonClick={handleModalClosing} />
       <Main isMobile={isMobile} isTablet={isTablet} />
       {/* <Footer /> */}
 

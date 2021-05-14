@@ -121,6 +121,11 @@ export const IconType = {
     width: 18,
     height: 18,
   },
+  CLOSE_MOBILE: {
+    name: `close-mobile`,
+    width: 14,
+    height: 14,
+  },
   CREDITS: {
     name: `credits`,
     width: 34,
@@ -235,8 +240,14 @@ export const InputControl = {
 };
 
 export const ModalFormInput = {
-  LOGIN: `login`,
-  PASSWORD: `password`
+  LOGIN: {
+    legend: `Ввод логина`,
+    name: `login`,
+  },
+  PASSWORD: {
+    legend: `Ввод пароля`,
+    name: `password`,
+  },
 };
 
 export const CalculatorStage = {

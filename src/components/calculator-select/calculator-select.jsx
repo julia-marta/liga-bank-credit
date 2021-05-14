@@ -33,13 +33,13 @@ const CalculatorSelect = ({creditPurpose, defaultValue, onChangeSelect}) => {
 
   return (
       <Fragment>
-        <button className={`form__input form__select ${isSelectOpened ? `form__select--opened` : ``}`} onClick={handleSelectClick} onBlur={handleSelectBlur}>
+        <button className={`form__input form__input--select ${isSelectOpened ? `form__input--opened` : ``}`} onClick={handleSelectClick} onBlur={handleSelectBlur}>
          {selectedValue}
          <Icon icon={IconType.SELECT} />
        </button>
        {isSelectOpened && <ul className="form__option-list">
         {Object.keys(CreditPurpose).map((purpose, i) => (
-          <li key={i + 1} id={CreditPurpose[purpose].type} className="form__input form__option"
+          <li key={i + 1} id={CreditPurpose[purpose].type} className="form__input form__input--option"
             onMouseDown={(evt) => evt.preventDefault()} onClick={handleSelectChange}>
             {CreditPurpose[purpose].name}
           </li>

@@ -79,6 +79,11 @@
 @media (max-width: $max-mobile-width) {
   .icon {
 
+    &--close-mobile {
+      top: 0;
+      left: -1px;
+    }
+
     &--login {
       top: 18px;
       left: 15px;

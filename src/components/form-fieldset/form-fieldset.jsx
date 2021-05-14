@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CalculatorFieldset = ({name, legend, children}) => {
+const FormFieldset = ({name, legend, children}) => {
 
   return (
     <fieldset className={`form__fieldset form__fieldset--${name}`}>
@@ -11,7 +11,7 @@ const CalculatorFieldset = ({name, legend, children}) => {
   );
 };
 
-CalculatorFieldset.propTypes = {
+FormFieldset.propTypes = {
   name: PropTypes.string.isRequired,
   legend: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([
@@ -20,4 +20,4 @@ CalculatorFieldset.propTypes = {
     ]).isRequired
 }
 
-export default CalculatorFieldset;
+export default FormFieldset;
