@@ -337,11 +337,16 @@
 }
 
 .form__submit {
+  width: 100%;
 
   &--login {
-    width: 100%;
     min-height: 60px;
     font-size: 18px;
+  }
+
+  &--checkout {
+    min-height: 51px;
+    margin-bottom: 6px;
   }
 }
 

@@ -29,6 +29,26 @@ export const SLIDER_INTERVAL = 4000;
 export const SLIDER_TRANSLATE = window.innerWidth;
 export const SLIDER_TRANSITION = 0.7;
 
+export const OFFER_ITEMS = [{
+  key: `sum`,
+  label: `Сумма ипотеки`,
+  currency: [`рубль`, `рубля`, `рублей`]
+},
+{
+  key: `rate`,
+  label: `Процентная ставка`,
+},
+{
+  key: `payment`,
+  label: `Ежемесячный платеж`,
+  currency: [`рубль`, `рубля`, `рублей`]
+},
+{
+  key: `income`,
+  label: `Необходимый доход`,
+  currency: [`рубль`, `рубля`, `рублей`]
+}];
+
 export const CONTACTS = [{
   type: `mobile`,
   number: `*0904`,
@@ -297,4 +317,12 @@ export const CalculatorFormField = {
   }
 };
 
+export const Rate = {
+  NORMAL: 9.40,
+  LOW: 8.50,
+};
 
+export const MinCreditSum = {
+  MORTGAGE: 500000,
+  AUTO: 200000,
+};

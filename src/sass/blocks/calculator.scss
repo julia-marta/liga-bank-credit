@@ -2,8 +2,15 @@
   padding-bottom: 0;
 }
 
+.calculator__form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
 .calculator__steps-wrapper {
-  max-width: 600px;
+  width: 600px;
 }
 
 .calculator__step {

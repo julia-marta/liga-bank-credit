@@ -1,7 +1,7 @@
 import React from 'react';
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
-const Slide = ({index, text, button, isActive}) => {
+const Slide = ({index, text, button}) => {
 
   return (
     <div className={`slide slide--${index}`}>
@@ -14,5 +14,15 @@ const Slide = ({index, text, button, isActive}) => {
       </div>
   );
 };
+
+Slide.propTypes = {
+  index: PropTypes.number.isRequired,
+  text: PropTypes.string.isRequired,
+  button: PropTypes.shape({
+    className: PropTypes.string.isRequired,
+    link: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+  }),
+}
 
 export default Slide;

@@ -1,0 +1,42 @@
+.offer {
+  box-sizing: border-box;
+  width: 500px;
+  margin-top: 6px;
+  padding: 0 58px;
+  padding-top: 53px;
+  padding-bottom: 54px;
+  background-color: $background;
+}
+
+.offer__title,
+.offer__value {
+  @include indents-none;
+  @include font-weight($medium);
+  font-size: 22px;
+  line-height: 31px;
+}
+
+.offer__items {
+  @include indents-none;
+  @include list-reset;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 157px;
+  grid-gap: 28px;
+  margin-top: 24px;
+  margin-bottom: 36px;
+}
+
+.offer__subtitle,
+.offer__rejection {
+  display: block;
+  margin-top: 4px;
+  color: $label-text;
+}
+
+.offer__rejection {
+  @include indents-none;
+  width: 70%;
+  margin-top: 12px;
+  line-height: 22px;
+}

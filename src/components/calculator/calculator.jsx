@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import Section from "../section/section";
@@ -9,6 +9,7 @@ import CalculatorProperty from "../calculator-property/calculator-property";
 import CalculatorInitial from "../calculator-initial/calculator-initial";
 import CalculatorTerm from "../calculator-term/calculator-term";
 import CalculatorMaternal from "../calculator-maternal/calculator-maternal";
+import CreditOffer from "../credit-offer/credit-offer";
 import {setPropertyValue, setInitialFee, setCreditTerm, setMaternalCapital} from "../../store/slice";
 import {getInitialFee} from "../../utils";
 import {SectionType, CalculatorStage, CalculatorFormField} from "../../const";
@@ -17,10 +18,16 @@ const {ONE, TWO} = CalculatorStage;
 
 const {SELECT, PROPERTY, INITIAL_FEE, CREDIT_TERM, MATERNAL_CAPITAL} = CalculatorFormField;
 
-const Calculator = ({propertyValue, initialFee, creditTerm, changePropertyValue, changeInitialFee, changeCreditTerm, changeMaternalCapital}) => {
+const Calculator = ({propertyValue, initialFee, creditTerm, maternalCapital, changePropertyValue, changeInitialFee, changeCreditTerm, changeMaternalCapital}) => {
 
   const [purpose, setPurpose] = useState(false);
-  // const [isRegistrationOpened, setRegistrationOpened] = useState(false);
+  const [isCheckout, setCheckout] = useState(false);
+
+  useEffect(() => {
+    if (!initialFee) {
+      changeInitialFee(getInitialFee(propertyValue));
+    }
+  });
 
   return (
     <Section name={SectionType.CALCULATOR.name} title={SectionType.CALCULATOR.title}>
@@ -59,6 +66,9 @@ const Calculator = ({propertyValue, initialFee, creditTerm, changePropertyValue,
           </CalculatorStep>
         }
         </div>
+        {purpose && <CreditOffer propertyValue={propertyValue} initialFee={initialFee} maternalCapital={maternalCapital}
+        creditTerm={creditTerm} onClickCheckout={setCheckout} />}
+        {isCheckout && <p>Показывается шаг 3</p>}
       </form>
     </Section>
   );
@@ -68,6 +78,7 @@ Calculator.propTypes = {
   propertyValue: PropTypes.number.isRequired,
   initialFee: PropTypes.number.isRequired,
   creditTerm: PropTypes.number.isRequired,
+  maternalCapital: PropTypes.number.isRequired,
   changePropertyValue: PropTypes.func.isRequired,
   changeInitialFee: PropTypes.func.isRequired,
   changeCreditTerm: PropTypes.func.isRequired,
@@ -78,6 +89,7 @@ const mapStateToProps = (store) => ({
   propertyValue: store.propertyValue,
   initialFee: store.initialFee,
   creditTerm: store.creditTerm,
+  maternalCapital: store.maternalCapital,
 });
 
 const mapDispatchToProps = (dispatch) => ({

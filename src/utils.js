@@ -2,6 +2,10 @@ export const parseNumberToString = (value) => {
   return value.toLocaleString();
 }
 
+export const parseFractionToString = (value) => {
+  return value.toLocaleString(undefined, { minimumFractionDigits: 2});
+}
+
 export const formatString = (string) => {
   return string.replace(/\s/g, '');
 }
@@ -11,7 +15,21 @@ export const isNumbersOnly = (value) => {
 }
 
 export const getInitialFee = (propertyValue) => {
-  return Math.floor(propertyValue * 0.1);
+  return Math.round(propertyValue * 0.1);
+}
+
+export const getAnnuityPayment = (sum, rate, term) => {
+
+  const monthRate = (rate / 100) / 12;
+  const termInMonths = term * 12;
+
+  const payment = (sum * monthRate) / (1 - (1 / Math.pow((1 + monthRate), termInMonths)));
+
+  return Math.round(payment);
+}
+
+export const getMinIncome = (payment) => {
+  return Math.round(payment * 100 / 45);
 }
 
 export const getInputSize = (stringValue, value) => {
