@@ -1,10 +1,11 @@
 import React, {Fragment, useState, useCallback} from 'react';
 import PropTypes from 'prop-types';
-import CalculatorInput from "../calculator-input/calculator-input";
+import Label from '../label/label';
+import InputSuffixed from "../input-suffixed/input-suffixed";
 import {parseNumberToString, formatString, isNumbersOnly, getInitialFee} from "../../utils";
 import {InputControl} from "../../const";
 
-const CalculatorProperty = ({name, label, suffix, minValue, maxValue, value, setValue, setInitialFeeValue}) => {
+const PropertyField = ({name, label, suffix, minValue, maxValue, value, setValue, setInitialFeeValue}) => {
 
   const stringValue = parseNumberToString(value);
 
@@ -92,15 +93,16 @@ const CalculatorProperty = ({name, label, suffix, minValue, maxValue, value, set
 
   return (
     <Fragment>
-        <CalculatorInput label={label} name={name} suffix={suffix} stringValue={stringValue} value={value}
+      <Label name={name} label={label} isLabelVisible={true} />
+      <InputSuffixed name={name} suffix={suffix} stringValue={stringValue} value={value}
         isError={isError} isErrorMessage={isError} isControls={true} onChangeInput={handleInputChange}
         onBlurInput={handleInputBlur} onClickControl={handleControlClick} />
-        <span className="form__sublabel">От 1 200 000&nbsp; до 25 000 000 рублей</span>
+      <span className="form__sublabel">От 1 200 000&nbsp; до 25 000 000 рублей</span>
     </Fragment>
     );
 }
 
-CalculatorProperty.propTypes = {
+PropertyField.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   suffix: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -111,4 +113,4 @@ CalculatorProperty.propTypes = {
   setInitialFeeValue: PropTypes.func.isRequired,
 }
 
-export default CalculatorProperty;
+export default PropertyField;

@@ -2,26 +2,26 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import CalculatorStep from "../calculator-step/calculator-step";
-import CalculatorApplication from "../calculator-application/calculator-application";
-import CalculatorApplicationForm from "../calculator-application-form/calculator-application-form";
+import Application from "../application/application";
+import ApplicationForm from "../application-form/application-form";
 import {saveClientData} from "../../store/slice";
 import {CalculatorStage} from "../../const";
 
-const CalculatorStepThree = ({applicationNumber, clientData, saveClient, propertyValue, initialFee, creditTerm, purpose, purposeName}) => {
+const StepThree = ({applicationNumber, clientData, saveClient, propertyValue, initialFee, creditTerm, purpose, purposeName}) => {
 
   return (
     <Fragment>
       <CalculatorStep name={CalculatorStage.THREE.name} title={CalculatorStage.THREE.title}>
-        <CalculatorApplication number={applicationNumber} purpose={purpose} purposeName={purposeName}
+        <Application number={applicationNumber} purpose={purpose} purposeName={purposeName}
         propertyValue={propertyValue} initialFee={initialFee} creditTerm={creditTerm} />
-        <CalculatorApplicationForm clientData={clientData} onChangeInput={saveClient} />
+        <ApplicationForm clientData={clientData} onChangeInput={saveClient} />
         <button className="form__submit form__submit--send button" type="submit">Отправить</button>
       </CalculatorStep>
     </Fragment>
   );
 };
 
-CalculatorStepThree.propTypes = {
+StepThree.propTypes = {
   applicationNumber: PropTypes.number.isRequired,
   clientData: PropTypes.shape({
     name: PropTypes.string,
@@ -48,5 +48,5 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export {CalculatorStepThree};
-export default connect(mapStateToProps, mapDispatchToProps)(CalculatorStepThree);
+export {StepThree};
+export default connect(mapStateToProps, mapDispatchToProps)(StepThree);

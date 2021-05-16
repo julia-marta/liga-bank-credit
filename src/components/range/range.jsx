@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CalculatorRange = ({minValue, maxValue, currentValue, step, onChangeRange}) => {
+const Range = ({minValue, maxValue, currentValue, step, onChangeRange}) => {
 
   return (
     <input type="range" min={minValue} max={maxValue} value={currentValue} step={step} className="form__range"
@@ -9,7 +9,7 @@ const CalculatorRange = ({minValue, maxValue, currentValue, step, onChangeRange}
   );
 }
 
-CalculatorRange.propTypes = {
+Range.propTypes = {
   minValue: PropTypes.number.isRequired,
   maxValue: PropTypes.number.isRequired,
   currentValue: PropTypes.number.isRequired,
@@ -17,4 +17,4 @@ CalculatorRange.propTypes = {
   onChangeRange: PropTypes.func.isRequired,
 }
 
-export default CalculatorRange;
+export default Range;

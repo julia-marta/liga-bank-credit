@@ -2,10 +2,10 @@ import React, {useState, useCallback} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import Section from "../section/section";
-import CalculatorStepOne from "../calculator-step-one/calculator-step-one";
-import CalculatorStepTwo from "../calculator-step-two/calculator-step-two";
-import CalculatorStepThree from "../calculator-step-three/calculator-step-three";
-import CreditOffer from "../credit-offer/credit-offer";
+import StepOne from "../step-one/step-one";
+import StepTwo from "../step-two/step-two";
+import StepThree from "../step-three/step-three";
+import Offer from "../offer/offer";
 import {saveApplicationData} from "../../store/slice";
 import {SectionType, CreditPurpose} from "../../const";
 
@@ -46,22 +46,19 @@ const Calculator = ({propertyValue, initialFee, creditTerm, isMaternalCapital, s
     <Section name={SectionType.CALCULATOR.name} title={SectionType.CALCULATOR.title}>
       <form action="#" className="calculator__form form" onSubmit={handleFormSubmit}>
         <div className="calculator__steps-wrapper">
-          <CalculatorStepOne creditPurpose={purpose} onChangeSelect={setPurpose} />
+          <StepOne creditPurpose={purpose} onChangePurpose={setPurpose} />
 
-        {purpose &&
-          <CalculatorStepTwo />
-        }
+          {purpose && <StepTwo />}
         </div>
         {purpose &&
-          <CreditOffer propertyValue={propertyValue} initialFee={initialFee} isMaternalCapital={isMaternalCapital}
+          <Offer propertyValue={propertyValue} initialFee={initialFee} isMaternalCapital={isMaternalCapital}
         creditTerm={creditTerm} purpose={purpose} onClickCheckout={setCheckout} onChangeData={closeApplicationForm} />}
 
         {isCheckout &&
-        <CalculatorStepThree propertyValue={propertyValue} initialFee={initialFee} creditTerm={creditTerm} 
-        purpose={purpose} purposeName={purposeName} />
-        }
+        <StepThree propertyValue={propertyValue} initialFee={initialFee} creditTerm={creditTerm}
+        purpose={purpose} purposeName={purposeName} />}
       </form>
-      {/* <CalculatorPopUp /> */}
+      {/* <PopUp /> */}
     </Section>
   );
 };

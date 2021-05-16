@@ -292,10 +292,17 @@ export const ModalFormField = {
   LOGIN: {
     legend: `Ввод логина`,
     name: `login`,
+    label: `Логин`,
+    type: `text`
   },
   PASSWORD: {
     legend: `Ввод пароля`,
     name: `password`,
+    label: `Пароль`,
+    type: {
+      visible: `text`,
+      invisible: `password`
+    }
   },
 };
 
@@ -349,21 +356,25 @@ export const CalculatorFormField = {
   }
 };
 
-export const CalculatorApplicationFormField = {
+export const ApplicationFormField = {
   NAME: {
     legend: `Ввод ФИО`,
     name: `name`,
-    placeholder: `ФИО`
+    placeholder: `ФИО`,
+    type: `text`
   },
   PHONE: {
     legend: `Ввод телефона`,
     name: `phone`,
-    placeholder: `Телефон`
+    placeholder: `Телефон`,
+    type: `tel`,
+    mask: `+7 (999) 999-99-99`
   },
   EMAIL: {
     legend: `Ввод электронной почты'`,
     name: `email`,
-    placeholder: `E-mail`
+    placeholder: `E-mail`,
+    type: `email`
   },
 };
 

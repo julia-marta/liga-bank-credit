@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {parseNumberToString, parseFractionToString, getAnnuityPayment, getMinIncome, declineNumeral} from "../../utils";
 import {OFFER_ITEMS, MATERNAL_CAPITAL, Rate, MinCreditSum} from "../../const";
 
-const CreditOffer = ({propertyValue, initialFee, isMaternalCapital, creditTerm, purpose, onClickCheckout, onChangeData}) => {
+const Offer = ({propertyValue, initialFee, isMaternalCapital, creditTerm, purpose, onClickCheckout, onChangeData}) => {
 
     useEffect(() => {
       onChangeData();
@@ -55,7 +55,7 @@ const CreditOffer = ({propertyValue, initialFee, isMaternalCapital, creditTerm, 
   );
 };
 
-CreditOffer.propTypes = {
+Offer.propTypes = {
   propertyValue: PropTypes.number.isRequired,
   initialFee: PropTypes.number.isRequired,
   isMaternalCapital: PropTypes.bool.isRequired,
@@ -64,4 +64,4 @@ CreditOffer.propTypes = {
   onChangeData: PropTypes.func.isRequired,
 }
 
-export default CreditOffer;
+export default Offer;

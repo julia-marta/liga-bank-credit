@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Icon from "../icon/icon";
 import {IconType} from "../../const";
 
-const CalculatorCheckbox = ({name, label, setValue}) => {
+const Checkbox = ({name, label, setValue}) => {
 
   const handleCheckboxChange = useCallback(
     (evt) => {
@@ -22,10 +22,10 @@ const CalculatorCheckbox = ({name, label, setValue}) => {
   );
 }
 
-CalculatorCheckbox.propTypes = {
+Checkbox.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   setValue: PropTypes.func.isRequired,
 }
 
-export default CalculatorCheckbox;
+export default Checkbox;

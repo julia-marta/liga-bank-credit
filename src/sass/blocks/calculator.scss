@@ -47,7 +47,7 @@
   text-align: center;
 }
 
-.calculator__application-list {
+.calculator__application {
   @include indents-none;
   @include list-reset;
   margin-bottom: 30px;

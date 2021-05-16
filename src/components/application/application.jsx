@@ -3,8 +3,7 @@ import PropTypes from "prop-types";
 import {parseNumberToString, declineNumeral} from "../../utils";
 import {APPLICATION_ITEMS} from "../../const";
 
-
-const CalculatorApplication = ({number, purpose, purposeName, propertyValue, initialFee, creditTerm}) => {
+const Application = ({number, purpose, purposeName, propertyValue, initialFee, creditTerm}) => {
 
   const actualValues = {
     number: `№ ${number < 10 ? `000${number}` : `00${number}`}`,
@@ -15,7 +14,7 @@ const CalculatorApplication = ({number, purpose, purposeName, propertyValue, ini
   };
 
   return (
-      <ul className="calculator__application-list">
+      <ul className="calculator__application">
         {APPLICATION_ITEMS.map((item, index) => {
           return <li key={index + 1} className="calculator__application-item">
           <span className="calculator__application-subtitle">{typeof item.label === `object` ? item.label[purpose] : item.label}</span>
@@ -26,7 +25,7 @@ const CalculatorApplication = ({number, purpose, purposeName, propertyValue, ini
   );
 };
 
-CalculatorApplication.propTypes = {
+Application.propTypes = {
   number: PropTypes.number.isRequired,
   purpose: PropTypes.string.isRequired,
   purposeName: PropTypes.string.isRequired,
@@ -35,4 +34,4 @@ CalculatorApplication.propTypes = {
   creditTerm: PropTypes.number.isRequired,
 }
 
-export default CalculatorApplication;
+export default Application;

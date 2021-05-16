@@ -1,10 +1,11 @@
 import React, {Fragment, useState, useCallback} from 'react';
 import PropTypes from 'prop-types';
-import CalculatorInput from "../calculator-input/calculator-input";
-import CalculatorRange from "../calculator-range/calculator-range";
+import Label from "../label/label";
+import InputSuffixed from "../input-suffixed/input-suffixed";
+import Range from "../range/range";
 import {parseNumberToString, formatString, isNumbersOnly, getInitialFee} from "../../utils";
 
-const CalculatorInitial = ({name, label, suffix, minValue, maxValue, value, setValue}) => {
+const InitialField = ({name, label, suffix, minValue, maxValue, value, setValue}) => {
 
   const [isError, setError] = useState(false);
   const [badInitialFee, setBadInitialFee] = useState(false);
@@ -93,9 +94,10 @@ const CalculatorInitial = ({name, label, suffix, minValue, maxValue, value, setV
 
   return (
     <Fragment>
-      <CalculatorInput label={label} name={name} suffix={suffix} stringValue={stringValue} value={actualValue}
+      <Label name={name} label={label} isLabelVisible={true} />
+      <InputSuffixed name={name} suffix={suffix} stringValue={stringValue} value={actualValue}
       isError={isError} onChangeInput={handleInputChange} onBlurInput={handleInputBlur} />
-      <CalculatorRange minValue={minValue} maxValue={maxValue} currentValue={actualValue} 
+      <Range minValue={minValue} maxValue={maxValue} currentValue={actualValue} 
       step={rangeStep} onChangeRange={handleRangeChange} />
       <div className="form__range-label">
         <span>{badInitialFee === `less` ? `< ` : badInitialFee === `more` ? `> ` : ``}{percentage}%</span>
@@ -104,7 +106,7 @@ const CalculatorInitial = ({name, label, suffix, minValue, maxValue, value, setV
   );
 }
 
-CalculatorInitial.propTypes = {
+InitialField.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   suffix: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -114,4 +116,4 @@ CalculatorInitial.propTypes = {
   setValue: PropTypes.func.isRequired,
 }
 
-export default CalculatorInitial;
+export default InitialField;

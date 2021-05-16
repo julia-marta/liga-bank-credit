@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Icon from "../icon/icon";
 import {IconType, CreditPurpose} from "../../const";
 
-const CalculatorSelect = ({creditPurpose, defaultValue, onChangeSelect}) => {
+const Select = ({creditPurpose, defaultValue, onChangeSelect}) => {
 
   const [isSelectOpened, setSelectOpened] = useState(false);
 
@@ -50,7 +50,7 @@ const CalculatorSelect = ({creditPurpose, defaultValue, onChangeSelect}) => {
   );
 };
 
-CalculatorSelect.propTypes = {
+Select.propTypes = {
   creditPurpose: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.string
@@ -59,4 +59,4 @@ CalculatorSelect.propTypes = {
   onChangeSelect: PropTypes.func.isRequired,
 }
 
-export default CalculatorSelect;
+export default Select;

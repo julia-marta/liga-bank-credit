@@ -32,8 +32,6 @@
   &--email {
     width: 300px;
   }
-
-
 }
 
 .form__label {
@@ -41,15 +39,16 @@
   margin-bottom: 11px;
   color: $label-text;
 
-  &--modal {
-    margin-bottom: 6px;
-  }
-
   &--checkbox {
     margin-bottom: 0;
     line-height: 16px;
     color: $main-text;
   }
+}
+
+.form__fieldset--login .form__label,
+.form__fieldset--password .form__label {
+  margin-bottom: 6px;
 }
 
 .form__checkbox {

@@ -1,10 +1,11 @@
 import React, {Fragment, useState, useCallback} from 'react';
 import PropTypes from 'prop-types';
-import CalculatorInput from "../calculator-input/calculator-input";
-import CalculatorRange from "../calculator-range/calculator-range";
+import Label from "../label/label";
+import InputSuffixed from "../input-suffixed/input-suffixed";
+import Range from "../range/range";
 import {parseNumberToString, isNumbersOnly} from "../../utils";
 
-const CalculatorTerm = ({name, label, suffix, minValue, maxValue, value, setValue}) => {
+const TermField = ({name, label, suffix, minValue, maxValue, value, setValue}) => {
   const stringValue = parseNumberToString(value);
 
   const [isError, setError] = useState(false);
@@ -80,10 +81,10 @@ const CalculatorTerm = ({name, label, suffix, minValue, maxValue, value, setValu
 
   return (
     <Fragment>
-      <CalculatorInput label={label} name={name} suffix={suffix} stringValue={stringValue} value={value}
+      <Label name={name} label={label} isLabelVisible={true} />
+      <InputSuffixed name={name} suffix={suffix} stringValue={stringValue} value={value}
       isError={isError} onChangeInput={handleInputChange} onBlurInput={handleInputBlur} />
-      <CalculatorRange minValue={minValue} maxValue={maxValue} currentValue={value}
-      step={1} onChangeRange={handleRangeChange} />
+      <Range minValue={minValue} maxValue={maxValue} currentValue={value} step={1} onChangeRange={handleRangeChange} />
       <div className="form__range-label form__range-label--double">
         <span>{badTerm === `less` ? `< ` : ``} {minValue} лет</span>
         <span>{badTerm === `more` ? `> ` : ``} {maxValue} лет</span>
@@ -92,7 +93,7 @@ const CalculatorTerm = ({name, label, suffix, minValue, maxValue, value, setValu
   );
 }
 
-CalculatorTerm.propTypes = {
+TermField.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   suffix: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -102,4 +103,4 @@ CalculatorTerm.propTypes = {
   setValue: PropTypes.func.isRequired,
 }
 
-export default CalculatorTerm;
+export default TermField;
