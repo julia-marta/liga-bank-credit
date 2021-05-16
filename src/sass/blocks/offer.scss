@@ -2,9 +2,7 @@
   box-sizing: border-box;
   width: 500px;
   margin-top: 6px;
-  padding: 0 58px;
-  padding-top: 53px;
-  padding-bottom: 54px;
+  padding: 53px 60px 60px 58px;
   background-color: $background;
 }
 
@@ -21,8 +19,8 @@
   @include list-reset;
   display: grid;
   grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr 157px;
-  grid-gap: 28px;
+  grid-template-columns: 227px 157px;
+  grid-row-gap: 28px;
   margin-top: 24px;
   margin-bottom: 36px;
 }
@@ -39,4 +37,52 @@
   width: 70%;
   margin-top: 12px;
   line-height: 22px;
+}
+
+@media (max-width: $max-tablet-width) {
+ .offer {
+    width: 100%;
+    margin-top: 44px;
+    padding: 52px 60px 59px;
+  }
+
+  .offer__title {
+    width: 65%;
+  }
+
+  .offer__rejection {
+    width: 50%;
+  }
+}
+
+@media (max-width: $max-mobile-width) {
+
+  .offer {
+    margin-top: 30px;
+    padding: 34px 15px 40px;
+  }
+
+  .offer__value {
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  .offer__title {
+    width: 85%;
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  .offer__items {
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-row-gap: 18px;
+    margin-top: 25px;
+    margin-bottom: 32px;
+  }
+
+  .offer__rejection {
+    width: auto;
+    margin-top: 13px;
+  }
 }

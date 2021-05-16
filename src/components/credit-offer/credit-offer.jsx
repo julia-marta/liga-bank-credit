@@ -1,13 +1,18 @@
-import React, {Fragment, useCallback} from 'react';
+import React, {Fragment, useEffect, useCallback} from 'react';
 import PropTypes from "prop-types";
 import {parseNumberToString, parseFractionToString, getAnnuityPayment, getMinIncome, declineNumeral} from "../../utils";
-import {OFFER_ITEMS, Rate, MinCreditSum} from "../../const";
+import {OFFER_ITEMS, MATERNAL_CAPITAL, Rate, MinCreditSum} from "../../const";
 
-const CreditOffer = ({propertyValue, initialFee, maternalCapital, creditTerm, onClickCheckout}) => {
+const CreditOffer = ({propertyValue, initialFee, isMaternalCapital, creditTerm, purpose, onClickCheckout, onChangeData}) => {
+
+    useEffect(() => {
+      onChangeData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [propertyValue, initialFee, creditTerm, isMaternalCapital, purpose]);
 
     const isRateLow = initialFee >= propertyValue * 0.15;
 
-    const sum = propertyValue - initialFee - maternalCapital;
+    const sum = propertyValue - initialFee - (isMaternalCapital ? MATERNAL_CAPITAL : 0);
     const rate = isRateLow ? Rate.LOW : Rate.NORMAL;
     const payment = getAnnuityPayment(sum, rate, creditTerm);
     const income = getMinIncome(payment);
@@ -53,9 +58,10 @@ const CreditOffer = ({propertyValue, initialFee, maternalCapital, creditTerm, on
 CreditOffer.propTypes = {
   propertyValue: PropTypes.number.isRequired,
   initialFee: PropTypes.number.isRequired,
-  maternalCapital: PropTypes.number.isRequired,
+  isMaternalCapital: PropTypes.bool.isRequired,
   creditTerm: PropTypes.number.isRequired,
   onClickCheckout: PropTypes.func.isRequired,
+  onChangeData: PropTypes.func.isRequired,
 }
 
 export default CreditOffer;

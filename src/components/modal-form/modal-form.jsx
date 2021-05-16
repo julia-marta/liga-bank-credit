@@ -4,9 +4,9 @@ import {connect} from "react-redux";
 import FormFieldset from "../form-fieldset/form-fieldset";
 import Icon from "../icon/icon";
 import {saveUserData} from "../../store/slice";
-import {IconType, ModalFormInput} from "../../const";
+import {IconType, ModalFormField} from "../../const";
 
-const {LOGIN, PASSWORD} = ModalFormInput;
+const {LOGIN, PASSWORD} = ModalFormField;
 
 const ModalForm = ({userData, saveUser, onSubmitForm}) => {
 

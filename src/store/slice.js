@@ -5,21 +5,40 @@ const defaultUserData = {
   password: ``
 };
 
+const defaultClientData = {
+  name: ``,
+  phone: ``,
+  email: ``
+};
+
 const defaultCreditData = {
   propertyValue: 2000000,
   initialFee: 0,
   creditTerm: 5,
-  maternalCapital: 0,
+  isMaternalCapital: false,
+};
+
+const defaultApplicationData = {
+  purpose: ``,
+  propertyValue: 0,
+  initialFee: 0,
+  creditTerm: 0,
 };
 
 const savedUserData = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : defaultUserData;
+const savedClientData = localStorage.getItem('client') ? JSON.parse(localStorage.getItem('client')) : defaultClientData;
 
 const initialState = {
   userData: savedUserData,
   propertyValue: defaultCreditData.propertyValue,
   initialFee: defaultCreditData.initialFee,
   creditTerm: defaultCreditData.creditTerm,
-  maternalCapital: defaultCreditData.maternalCapital,
+  isMaternalCapital: defaultCreditData.isMaternalCapital,
+  application: {
+    number: 1,
+    data: defaultApplicationData,
+    clientData: savedClientData
+  }
 };
 
 const ligaBankSlice = createSlice({
@@ -40,7 +59,14 @@ const ligaBankSlice = createSlice({
       state.creditTerm = action.payload;
     },
     setMaternalCapital(state, action) {
-      state.maternalCapital = action.payload;
+      state.isMaternalCapital = action.payload;
+    },
+    saveApplicationData(state, action) {
+      state.application = {...state.application, number: state.application.number + 1, data: action.payload};
+    },
+    saveClientData(state, action) {
+      localStorage.setItem('client', JSON.stringify(action.payload));
+      state.application.clientData = action.payload;
     },
 
   }
@@ -48,5 +74,14 @@ const ligaBankSlice = createSlice({
 
 const Reducer = ligaBankSlice.reducer;
 
-export const {saveUserData, setPropertyValue, setInitialFee, setCreditTerm, setMaternalCapital} = ligaBankSlice.actions;
-export default Reducer;
+export const {
+    saveUserData,
+    setPropertyValue,
+    setInitialFee,
+    setCreditTerm,
+    setMaternalCapital,
+    saveApplicationData,
+    saveClientData
+  } = ligaBankSlice.actions;
+
+  export default Reducer;

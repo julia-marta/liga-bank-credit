@@ -10,13 +10,30 @@
   }
 
   &--password,
-  &--select {
+  &--select,
+  &--maternal {
     margin-bottom: 0px;
   }
 
   &--initial {
     margin-bottom: 21px;
   }
+
+  &--term {
+    margin-bottom: 23px;
+  }
+
+  &--name {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  &--phone,
+  &--email {
+    width: 300px;
+  }
+
+
 }
 
 .form__label {
@@ -29,6 +46,8 @@
   }
 
   &--checkbox {
+    margin-bottom: 0;
+    line-height: 16px;
     color: $main-text;
   }
 }
@@ -49,7 +68,7 @@
 .form__checkbox-input + label::before {
   content: "";
   position: absolute;
-  top: 0.5px;
+  top: 0;
   left: 0;
   box-sizing: border-box;
   width: 16px;
@@ -89,6 +108,13 @@
   background-color: transparent;
   border: 1px solid $main-text;
   border-radius: 4px;
+
+  &::placeholder {
+    @include font-weight;
+    font-size: 18px;
+    color: $pale-text;
+    letter-spacing: 0.03em;
+  }
 
   &:focus {
     box-shadow: inset 0 0 2px 1px $button;
@@ -166,13 +192,14 @@
   }
 }
 
+.form__input--opened svg {
+  transform: rotate(-180deg);
+}
+
 .form__fieldset--term .form__input--suffixed {
   margin-left: -8px;
 }
 
-.form__input--opened svg {
-  transform: rotate(-180deg);
-}
 
 .form__suffix {
   font-size: 18px;
@@ -346,7 +373,12 @@
 
   &--checkout {
     min-height: 51px;
-    margin-bottom: 6px;
+  }
+
+  &--send {
+    width: 198px;
+    min-height: 51px;
+    margin: 0 auto;
   }
 }
 
@@ -360,8 +392,6 @@
   z-index: 10;
 }
 
-
-
 @media (max-width: $max-tablet-width) {
 
   .form__fieldset {
@@ -372,13 +402,19 @@
     }
 
     &--password,
-    &--select {
+    &--select,
+    &--maternal {
       margin-bottom: 0px;
     }
 
     &--initial {
       margin-bottom: 16px;
     }
+
+    &--term {
+      margin-bottom: 18px;
+    }
+
   }
 
   .form__input--suffixed,
@@ -402,7 +438,8 @@
       margin-bottom: 30px;
     }
 
-    &--select {
+    &--select,
+    &--maternal {
       margin-bottom: 0;
     }
 
@@ -441,18 +478,19 @@
     }
   }
 
-
   .form__show-password {
     right: 11px;
   }
 
   .form__submit {
+    font-size: 14px;
 
     &--login {
       order: 3;
       min-height: 51px;
-      font-size: 14px;
+
     }
+
   }
 
   .form__restore-password {

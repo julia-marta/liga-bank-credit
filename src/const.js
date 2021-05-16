@@ -49,6 +49,33 @@ export const OFFER_ITEMS = [{
   currency: [`рубль`, `рубля`, `рублей`]
 }];
 
+export const APPLICATION_ITEMS = [{
+  key: `number`,
+  label: `Номер заявки`,
+},
+{
+  key: `purpose`,
+  label: `Цель кредита`,
+},
+{
+  key: `propertyValue`,
+  label: {
+    mortgage: `Стоимость недвижимости`,
+    auto: `Стоимость автомобиля`
+  },
+  currency: [`рубль`, `рубля`, `рублей`]
+},
+{
+  key: `initialFee`,
+  label: `Первоначальный взнос`,
+  currency: [`рубль`, `рубля`, `рублей`]
+},
+{
+  key: `creditTerm`,
+  label: `Срок кредитования`,
+  currency: [`год`, `года`, `лет`],
+}];
+
 export const CONTACTS = [{
   type: `mobile`,
   number: `*0904`,
@@ -122,11 +149,13 @@ export const SectionType = {
 export const CreditPurpose = {
   MORTGAGE: {
     type: `mortgage`,
-    name: `Ипотечное кредитование`
+    name: `Ипотечное кредитование`,
+    label: `Ипотека`
   },
   AUTO: {
     type: `auto`,
-    name: `Автомобильное кредитование`
+    name: `Автомобильное кредитование`,
+    label: `Автокредит`
   }
 };
 
@@ -259,7 +288,7 @@ export const InputControl = {
   STEP: 100000
 };
 
-export const ModalFormInput = {
+export const ModalFormField = {
   LOGIN: {
     legend: `Ввод логина`,
     name: `login`,
@@ -278,7 +307,11 @@ export const CalculatorStage = {
   TWO: {
     name: `two`,
     title: `Шаг 2. Введите параметры кредита`
-  }
+  },
+  THREE: {
+    name: `three`,
+    title: `Шаг 3. Оформление заявки`
+  },
 };
 
 export const CalculatorFormField = {
@@ -313,8 +346,25 @@ export const CalculatorFormField = {
     legend: `Использование материнского капитала`,
     name: `maternal`,
     label: `Использовать материнский капитал`,
-    value: 470000,
   }
+};
+
+export const CalculatorApplicationFormField = {
+  NAME: {
+    legend: `Ввод ФИО`,
+    name: `name`,
+    placeholder: `ФИО`
+  },
+  PHONE: {
+    legend: `Ввод телефона`,
+    name: `phone`,
+    placeholder: `Телефон`
+  },
+  EMAIL: {
+    legend: `Ввод электронной почты'`,
+    name: `email`,
+    placeholder: `E-mail`
+  },
 };
 
 export const Rate = {
@@ -326,3 +376,5 @@ export const MinCreditSum = {
   MORTGAGE: 500000,
   AUTO: 200000,
 };
+
+export const MATERNAL_CAPITAL = 470000;

@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import Icon from "../icon/icon";
 import {IconType} from "../../const";
 
-const CalculatorMaternal = ({name, label, value, setValue}) => {
+const CalculatorCheckbox = ({name, label, setValue}) => {
 
   const handleCheckboxChange = useCallback(
     (evt) => {
-      evt.target.checked ? setValue(value) : setValue(0);
-    }, [setValue, value]
+      evt.target.checked ? setValue(true) : setValue(false);
+    }, [setValue]
   );
 
   return (
@@ -22,11 +22,10 @@ const CalculatorMaternal = ({name, label, value, setValue}) => {
   );
 }
 
-CalculatorMaternal.propTypes = {
+CalculatorCheckbox.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  value: PropTypes.number.isRequired,
   setValue: PropTypes.func.isRequired,
 }
 
-export default CalculatorMaternal;
+export default CalculatorCheckbox;
