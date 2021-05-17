@@ -58,7 +58,7 @@ const ModalForm = ({userData, saveUser, clearForm, onSubmitForm, onSubmitError})
      }
 
       clearForm();
-      onSubmitForm(evt);
+      onSubmitForm();
 
     }, [errors, clearForm, onSubmitForm, onSubmitError]
   );

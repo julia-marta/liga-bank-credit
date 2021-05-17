@@ -1,33 +1,35 @@
-import React, {Fragment} from 'react';
+import React, {useCallback} from 'react';
 import PropTypes from "prop-types";
 import ModalForm from "../modal-form/modal-form";
 import Icon from "../icon/icon";
-import {IconType} from "../../const";
+import {IconType, ModalType} from "../../const";
 
-const Modal = ({isActive, isMobile, animation, onClose, onError, onAnimation}) => {
+const Modal = ({isMobile, animation, onClose, onError, onAnimation}) => {
+
+  const handleModalClose = useCallback(
+    () => {
+      onClose(ModalType.LOGIN)
+    }, [onClose]
+  );
 
   return (
-    <Fragment>
-      {isActive && <section className="modal">
+      <section className="modal">
         <h2 className="visually-hidden">Вход в интернет-банк</h2>
         <div className={`modal__window ${animation.fadein ? `modal__window--fade-in` : ``} ${animation.shake ? `modal__window--shake` : ``}`} 
         onAnimationEnd={onAnimation}>
           <div className="modal__header">
             <img src="svg/modal_logo.svg" width="151" height="31" alt="Логотип интернет-банка Лига Банка"/>
-            <button type="button" className="modal__close" aria-label="Закрыть окно" onClick={onClose}>
+            <button type="button" className="modal__close" aria-label="Закрыть окно" onClick={handleModalClose}>
               {isMobile? <Icon icon={IconType.CLOSE_MOBILE} /> : <Icon icon={IconType.CLOSE} />}
             </button>
           </div>
-          <ModalForm onSubmitForm={onClose} onSubmitError={onError} />
+          <ModalForm onSubmitForm={handleModalClose} onSubmitError={onError} />
         </div>
       </section>
-      }
-    </Fragment>
   );
 };
 
 Modal.propTypes = {
-  isActive: PropTypes.bool.isRequired,
   isMobile: PropTypes.bool,
   animation: PropTypes.shape({
     fadein: PropTypes.bool.isRequired,

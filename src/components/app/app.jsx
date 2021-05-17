@@ -1,21 +1,22 @@
 import React, {Fragment, useState, useEffect, useCallback} from 'react';
 import {useMediaQuery} from 'react-responsive';
 import Header from "../header/header";
-import Modal from "../modal/modal";
 import Main from "../main/main";
 // import Footer from "../footer/footer";
-import {Key, Viewport, defaultAnimation} from "../../const";
+import Modal from "../modal/modal";
+import PopUp from "../pop-up/pop-up";
+import {Key, Viewport, defaultAnimation, defaultActiveModal} from "../../const";
 
 const App = () => {
 
   const isTablet = useMediaQuery({minWidth: Viewport.TABLET.min, maxWidth: Viewport.TABLET.max});
   const isMobile = useMediaQuery({maxWidth: Viewport.MOBILE.max});
 
-  const [isModalActive, setModalActive] = useState(false);
+  const [activeModal, setActiveModal] = useState(defaultActiveModal);
   const [modalAnimation, setAnimation] = useState(defaultAnimation);
 
   useEffect(() => {
-    if (isModalActive) {
+    if (activeModal.login || activeModal.popup) {
       document.body.style.overflow = `hidden`;
       document.addEventListener(`keydown`, handleEscKeyDown);
     } else {
@@ -25,25 +26,25 @@ const App = () => {
   });
 
   const handleModalOpening = useCallback(
-    (evt) => {
-      evt.preventDefault();
-      setModalActive(true);
-    }, []
+    (name) => {
+      setActiveModal({...activeModal, [name]: true});
+    }, [activeModal]
   );
 
   const handleModalClosing = useCallback(
-    (evt) => {
-      evt.preventDefault();
-      setModalActive(false);
+    (name) => {
+      setActiveModal({...activeModal, [name]: false});
       setAnimation(defaultAnimation);
-    }, []
+
+    }, [activeModal]
   );
 
   const handleEscKeyDown = useCallback(
     (evt) => {
       if (evt.key === Key.ESCAPE || evt.key === Key.ESC) {
         evt.preventDefault();
-        setModalActive(false);
+        setActiveModal(defaultActiveModal);
+        setAnimation(defaultAnimation);
       }
     }, []
   );
@@ -72,11 +73,13 @@ const App = () => {
   return (
     <Fragment>
       <Header onLoginButtonClick={handleModalOpening} isMobile={isMobile} isTablet={isTablet} />
-      <Modal isActive={isModalActive} isMobile={isMobile} animation={modalAnimation}
-        onClose={handleModalClosing} onError={handleModalError} onAnimation={handleModalAnimation} />
-      <Main isMobile={isMobile} isTablet={isTablet} />
+      <Main isMobile={isMobile} isTablet={isTablet} showPopUp={handleModalOpening} />
       {/* <Footer /> */}
 
+      {activeModal.login && <Modal isMobile={isMobile} animation={modalAnimation} onClose={handleModalClosing} 
+        onError={handleModalError} onAnimation={handleModalAnimation} />}
+
+      {activeModal.popup && <PopUp isMobile={isMobile} onClose={handleModalClosing} />}
     </Fragment>
   );
 };

@@ -6,16 +6,25 @@ import StepOne from "../step-one/step-one";
 import StepTwo from "../step-two/step-two";
 import StepThree from "../step-three/step-three";
 import Offer from "../offer/offer";
-import {saveApplication, clearClientData, clearCreditData} from "../../store/slice";
-import {SectionType, CreditPurpose} from "../../const";
 
-const Calculator = ({propertyValue, initialFee, creditTerm, isMaternalCapital, saveNewApplication, clearCalculatorForm, clearApplicationForm}) => {
+import {saveApplication, clearClientData, clearCreditData} from "../../store/slice";
+import {SectionType, CreditPurpose, ModalType} from "../../const";
+
+const Calculator = ({
+    propertyValue,
+    initialFee,
+    creditTerm,
+    isMaternalCapital,
+    saveNewApplication,
+    clearCalculatorForm,
+    clearApplicationForm,
+    showPopUp
+  }) => {
 
   const [purpose, setPurpose] = useState(false);
   const [isCheckout, setCheckout] = useState(false);
   const [isErrors, setErrors] = useState(false);
   const [isErrorsVisible, setErrorsVisible] = useState(false);
-  const [isModal, setModal] = useState(false);
 
   const purposeName = purpose ? CreditPurpose[purpose.toUpperCase()].label : ``;
 
@@ -40,7 +49,6 @@ const Calculator = ({propertyValue, initialFee, creditTerm, isMaternalCapital, s
 
       setCheckout(false);
       setPurpose(false);
-      setModal(true);
       saveNewApplication({
          purpose: purposeName,
          propertyValue,
@@ -49,7 +57,9 @@ const Calculator = ({propertyValue, initialFee, creditTerm, isMaternalCapital, s
         });
       clearCalculatorForm();
       clearApplicationForm();
-    }, [creditTerm, initialFee, propertyValue, purposeName, saveNewApplication, clearApplicationForm, clearCalculatorForm, isErrors]
+      showPopUp(ModalType.POP_UP);
+
+    }, [isErrors, saveNewApplication, purposeName, propertyValue, initialFee, creditTerm, clearCalculatorForm, clearApplicationForm, showPopUp]
   );
 
   return (
@@ -68,8 +78,6 @@ const Calculator = ({propertyValue, initialFee, creditTerm, isMaternalCapital, s
         <StepThree propertyValue={propertyValue} initialFee={initialFee} creditTerm={creditTerm} purpose={purpose} 
         purposeName={purposeName} isErrorsVisible={isErrorsVisible} setErrors={setErrors} setErrorsVisible={setErrorsVisible} />}
       </form>
-
-        {/* isModal && <PopUp /> */}
     </Section>
   );
 };
@@ -82,6 +90,7 @@ Calculator.propTypes = {
   saveNewApplication: PropTypes.func.isRequired,
   clearApplicationForm: PropTypes.func.isRequired,
   clearCalculatorForm: PropTypes.func.isRequired,
+  showPopUp: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (store) => ({

@@ -288,9 +288,19 @@ export const InputControl = {
   STEP: 100000
 };
 
+export const ModalType = {
+  LOGIN: `login`,
+  POP_UP: `popup`,
+};
+
 export const defaultAnimation = {
   fadein: true,
   shake: false,
+};
+
+export const defaultActiveModal = {
+  login: false,
+  popup: false,
 };
 
 export const ModalFormField = {

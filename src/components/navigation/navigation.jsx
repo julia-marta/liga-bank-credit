@@ -1,10 +1,17 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import PropTypes from "prop-types";
 import Icon from "../icon/icon";
 import MenuItem from "../menu-item/menu-item";
-import {HEADER_MENU_ITEMS, IconType} from "../../const";
+import {HEADER_MENU_ITEMS, ModalType, IconType} from "../../const";
 
 const Navigation = ({isCompactMenu, isMobileMenu, isMenuOpened, onLoginButtonClick}) => {
+
+  const handleButtonClick = useCallback(
+    (evt) => {
+      evt.preventDefault();
+      onLoginButtonClick(ModalType.LOGIN)
+    }, [onLoginButtonClick]
+  );
 
   return (
     <nav className={`navigation ${isMobileMenu ? isMenuOpened ? `navigation--opened` : `navigation--closed` : ``}`}>
@@ -16,7 +23,7 @@ const Navigation = ({isCompactMenu, isMobileMenu, isMenuOpened, onLoginButtonCli
       <ul className="navigation__list navigation__list--user">
         <li className="navigation__item navigation__item--user">
           {/* eslint-disable-next-line */}
-          <a className="navigation__link navigation__link--user" href="#" onClick={onLoginButtonClick}>
+          <a className="navigation__link navigation__link--user" href="#" onClick={handleButtonClick}>
             <Icon icon={IconType.LOGIN} />
             {isCompactMenu || !isMenuOpened ? `` : <span>Войти в Интернет-банк</span>}
           </a>

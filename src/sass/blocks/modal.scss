@@ -58,6 +58,14 @@
   &--shake {
     animation: shake 0.5s;
   }
+
+  &--pop-up {
+    width: 500px;
+    height: 193px;
+    padding: 52px;
+    text-align: center;
+    border: none;
+  }
 }
 
 .modal__header {
@@ -84,11 +92,31 @@
   }
 }
 
+.modal__window--pop-up .modal__close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}
+
 .modal__form {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   padding: 0 1px;
+}
+
+.modal__title {
+  @include indents-none;
+  @include font-weight($medium);
+  margin-bottom: 12px;
+  font-size: 22px;
+  line-height: 30px;
+}
+
+.modal__message {
+  @include indents-none;
+  line-height: 22px;
+  color: $label-text;
 }
 
 @media (max-width: $max-tablet-width) {
