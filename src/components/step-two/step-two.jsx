@@ -61,9 +61,9 @@ StepTwo.propTypes = {
 }
 
 const mapStateToProps = (store) => ({
-  propertyValue: store.propertyValue,
-  initialFee: store.initialFee,
-  creditTerm: store.creditTerm,
+  propertyValue: store.creditData.propertyValue,
+  initialFee: store.creditData.initialFee,
+  creditTerm: store.creditData.creditTerm,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -14,6 +14,18 @@ export const isNumbersOnly = (value) => {
   return (/^[0-9 ]*$/.test(value));
 }
 
+export const validateFields = (fields) => {
+
+  const errors = {}
+
+  for (const key of Object.keys(fields)) {
+    errors[key] = fields[key].length === 0
+  }
+
+  return errors;
+};
+
+
 export const getInitialFee = (propertyValue) => {
   return Math.round(propertyValue * 0.1);
 }

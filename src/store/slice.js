@@ -1,7 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
 
 const defaultUserData = {
-  user: ``,
+  login: ``,
   password: ``
 };
 
@@ -18,27 +18,15 @@ const defaultCreditData = {
   isMaternalCapital: false,
 };
 
-const defaultApplicationData = {
-  purpose: ``,
-  propertyValue: 0,
-  initialFee: 0,
-  creditTerm: 0,
-};
-
 const savedUserData = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : defaultUserData;
 const savedClientData = localStorage.getItem('client') ? JSON.parse(localStorage.getItem('client')) : defaultClientData;
 
 const initialState = {
   userData: savedUserData,
-  propertyValue: defaultCreditData.propertyValue,
-  initialFee: defaultCreditData.initialFee,
-  creditTerm: defaultCreditData.creditTerm,
-  isMaternalCapital: defaultCreditData.isMaternalCapital,
-  application: {
-    number: 1,
-    data: defaultApplicationData,
-    clientData: savedClientData
-  }
+  creditData: defaultCreditData,
+  clientData: savedClientData,
+  currentApplicationNumber: 1,
+  applications: []
 };
 
 const ligaBankSlice = createSlice({
@@ -50,25 +38,36 @@ const ligaBankSlice = createSlice({
       state.userData = action.payload;
     },
     setPropertyValue(state, action) {
-      state.propertyValue = action.payload;
+      state.creditData.propertyValue = action.payload;
     },
     setInitialFee(state, action) {
-      state.initialFee = action.payload;
+      state.creditData.initialFee = action.payload;
     },
     setCreditTerm(state, action) {
-      state.creditTerm = action.payload;
+      state.creditData.creditTerm = action.payload;
     },
     setMaternalCapital(state, action) {
-      state.isMaternalCapital = action.payload;
+      state.creditData.isMaternalCapital = action.payload;
     },
-    saveApplicationData(state, action) {
-      state.application = {...state.application, number: state.application.number + 1, data: action.payload};
+    saveApplication(state, action) {
+      state.applications.push({...action.payload, number: state.currentApplicationNumber, client: state.clientData});
+      state.currentApplicationNumber += 1;
     },
     saveClientData(state, action) {
       localStorage.setItem('client', JSON.stringify(action.payload));
-      state.application.clientData = action.payload;
+      state.clientData = action.payload;
     },
-
+    clearUserData(state) {
+      localStorage.removeItem('user');
+      state.userData = defaultUserData;
+    },
+    clearCreditData(state) {
+      state.creditData = defaultCreditData;
+    },
+    clearClientData(state) {
+      localStorage.removeItem('client');
+      state.clientData = defaultClientData
+    },
   }
 });
 
@@ -80,8 +79,11 @@ export const {
     setInitialFee,
     setCreditTerm,
     setMaternalCapital,
-    saveApplicationData,
-    saveClientData
+    saveApplication,
+    saveClientData,
+    clearUserData,
+    clearCreditData,
+    clearClientData
   } = ligaBankSlice.actions;
 
   export default Reducer;

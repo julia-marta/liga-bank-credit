@@ -4,7 +4,7 @@ import Header from "../header/header";
 import Modal from "../modal/modal";
 import Main from "../main/main";
 // import Footer from "../footer/footer";
-import {Key, Viewport} from "../../const";
+import {Key, Viewport, defaultAnimation} from "../../const";
 
 const App = () => {
 
@@ -12,6 +12,7 @@ const App = () => {
   const isMobile = useMediaQuery({maxWidth: Viewport.MOBILE.max});
 
   const [isModalActive, setModalActive] = useState(false);
+  const [modalAnimation, setAnimation] = useState(defaultAnimation);
 
   useEffect(() => {
     if (isModalActive) {
@@ -34,6 +35,7 @@ const App = () => {
     (evt) => {
       evt.preventDefault();
       setModalActive(false);
+      setAnimation(defaultAnimation);
     }, []
   );
 
@@ -46,10 +48,32 @@ const App = () => {
     }, []
   );
 
+  const handleModalError = useCallback(
+    () => {
+      setAnimation({ ...modalAnimation, shake: true });
+    }, [modalAnimation]
+  );
+
+  const handleModalAnimation = useCallback(
+    () => {
+      if (modalAnimation.fadein) {
+        setAnimation({ ...modalAnimation, fadein: false });
+      }
+
+      if (modalAnimation.shake) {
+        setAnimation({ ...modalAnimation, shake: false });
+      }
+
+      return;
+
+    }, [modalAnimation]
+  );
+
   return (
     <Fragment>
       <Header onLoginButtonClick={handleModalOpening} isMobile={isMobile} isTablet={isTablet} />
-      <Modal isActive={isModalActive} isMobile={isMobile} onCloseButtonClick={handleModalClosing} />
+      <Modal isActive={isModalActive} isMobile={isMobile} animation={modalAnimation}
+        onClose={handleModalClosing} onError={handleModalError} onAnimation={handleModalAnimation} />
       <Main isMobile={isMobile} isTablet={isTablet} />
       {/* <Footer /> */}
 

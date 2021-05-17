@@ -6,13 +6,15 @@ import StepOne from "../step-one/step-one";
 import StepTwo from "../step-two/step-two";
 import StepThree from "../step-three/step-three";
 import Offer from "../offer/offer";
-import {saveApplicationData} from "../../store/slice";
+import {saveApplication, clearClientData, clearCreditData} from "../../store/slice";
 import {SectionType, CreditPurpose} from "../../const";
 
-const Calculator = ({propertyValue, initialFee, creditTerm, isMaternalCapital, saveApplication}) => {
+const Calculator = ({propertyValue, initialFee, creditTerm, isMaternalCapital, saveNewApplication, clearCalculatorForm, clearApplicationForm}) => {
 
   const [purpose, setPurpose] = useState(false);
   const [isCheckout, setCheckout] = useState(false);
+  const [isErrors, setErrors] = useState(false);
+  const [isErrorsVisible, setErrorsVisible] = useState(false);
   const [isModal, setModal] = useState(false);
 
   const purposeName = purpose ? CreditPurpose[purpose.toUpperCase()].label : ``;
@@ -30,16 +32,24 @@ const Calculator = ({propertyValue, initialFee, creditTerm, isMaternalCapital, s
   const handleFormSubmit = useCallback(
     (evt) => {
       evt.preventDefault();
+
+      if (isErrors) {
+        setErrorsVisible(true);
+        return;
+      }
+
       setCheckout(false);
       setPurpose(false);
       setModal(true);
-      saveApplication({
+      saveNewApplication({
          purpose: purposeName,
          propertyValue,
          initialFee,
          creditTerm,
         });
-    }, [creditTerm, initialFee, propertyValue, purposeName, saveApplication]
+      clearCalculatorForm();
+      clearApplicationForm();
+    }, [creditTerm, initialFee, propertyValue, purposeName, saveNewApplication, clearApplicationForm, clearCalculatorForm, isErrors]
   );
 
   return (
@@ -55,10 +65,11 @@ const Calculator = ({propertyValue, initialFee, creditTerm, isMaternalCapital, s
         creditTerm={creditTerm} purpose={purpose} onClickCheckout={setCheckout} onChangeData={closeApplicationForm} />}
 
         {isCheckout &&
-        <StepThree propertyValue={propertyValue} initialFee={initialFee} creditTerm={creditTerm}
-        purpose={purpose} purposeName={purposeName} />}
+        <StepThree propertyValue={propertyValue} initialFee={initialFee} creditTerm={creditTerm} purpose={purpose} 
+        purposeName={purposeName} isErrorsVisible={isErrorsVisible} setErrors={setErrors} setErrorsVisible={setErrorsVisible} />}
       </form>
-      {/* <PopUp /> */}
+
+        {/* isModal && <PopUp /> */}
     </Section>
   );
 };
@@ -68,21 +79,30 @@ Calculator.propTypes = {
   initialFee: PropTypes.number.isRequired,
   creditTerm: PropTypes.number.isRequired,
   isMaternalCapital: PropTypes.bool.isRequired,
-  saveApplication: PropTypes.func.isRequired,
+  saveNewApplication: PropTypes.func.isRequired,
+  clearApplicationForm: PropTypes.func.isRequired,
+  clearCalculatorForm: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (store) => ({
-  propertyValue: store.propertyValue,
-  initialFee: store.initialFee,
-  creditTerm: store.creditTerm,
-  isMaternalCapital: store.isMaternalCapital,
+  propertyValue: store.creditData.propertyValue,
+  initialFee: store.creditData.initialFee,
+  creditTerm: store.creditData.creditTerm,
+  isMaternalCapital: store.creditData.isMaternalCapital,
 });
 
 const mapDispatchToProps = (dispatch) => ({
 
-  saveApplication(data) {
-    dispatch(saveApplicationData(data));
+  saveNewApplication(data) {
+    dispatch(saveApplication(data));
   },
+  clearCalculatorForm() {
+    dispatch(clearCreditData());
+  },
+  clearApplicationForm() {
+    dispatch(clearClientData());
+  },
+
 });
 
 export {Calculator};

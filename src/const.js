@@ -288,6 +288,11 @@ export const InputControl = {
   STEP: 100000
 };
 
+export const defaultAnimation = {
+  fadein: true,
+  shake: false,
+};
+
 export const ModalFormField = {
   LOGIN: {
     legend: `Ввод логина`,
