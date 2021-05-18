@@ -124,6 +124,16 @@
     width: 678px;
     height: 493px;
     padding: 55px 83px;
+
+    &--pop-up {
+      height: 193px;
+      padding: 52px 155px;
+    }
+  }
+
+  .modal__window--pop-up .modal__close {
+    top: 29px;
+    right: 29px;
   }
 }
 
@@ -132,13 +142,29 @@
     width: 290px;
     height: 455px;
     padding: 45px 10px;
+
+    &--pop-up {
+      height: 198px;
+      padding: 34px 26px;
+    }
   }
 
   .modal__header {
     margin-bottom: 29px;
   }
 
+  .modal__window--pop-up .modal__close {
+    top: 14px;
+    right: 9px;
+  }
+
   .modal__form {
     padding: 0 6px;
+  }
+
+  .modal__title {
+    margin-bottom: 14px;
+    font-size: 18px;
+    line-height: 25px;
   }
 }

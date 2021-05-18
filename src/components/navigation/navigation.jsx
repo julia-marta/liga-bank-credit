@@ -6,7 +6,7 @@ import {HEADER_MENU_ITEMS, ModalType, IconType} from "../../const";
 
 const Navigation = ({isCompactMenu, isMobileMenu, isMenuOpened, onLoginButtonClick}) => {
 
-  const handleButtonClick = useCallback(
+  const handleLoginButtonClick = useCallback(
     (evt) => {
       evt.preventDefault();
       onLoginButtonClick(ModalType.LOGIN)
@@ -23,7 +23,7 @@ const Navigation = ({isCompactMenu, isMobileMenu, isMenuOpened, onLoginButtonCli
       <ul className="navigation__list navigation__list--user">
         <li className="navigation__item navigation__item--user">
           {/* eslint-disable-next-line */}
-          <a className="navigation__link navigation__link--user" href="#" onClick={handleButtonClick}>
+          <a className="navigation__link navigation__link--user" href="#" onClick={handleLoginButtonClick}>
             <Icon icon={IconType.LOGIN} />
             {isCompactMenu || !isMenuOpened ? `` : <span>Войти в Интернет-банк</span>}
           </a>

@@ -14,14 +14,14 @@ const Header = ({onLoginButtonClick, isMobile, isTablet}) => {
     }
   }, [isMobile]);
 
-  const handleMenuOpening = useCallback(
+  const handleBurgerMenuClick = useCallback(
     (evt) => {
       evt.preventDefault();
-      setMenuOpened(true);
-    }, []
+      setMenuOpened(!isMenuOpened);
+    }, [isMenuOpened]
   );
 
-  const handleMenuClosing = useCallback(
+  const handleCloseButtonClick = useCallback(
     (evt) => {
       evt.preventDefault();
       setMenuOpened(false);
@@ -33,10 +33,10 @@ const Header = ({onLoginButtonClick, isMobile, isTablet}) => {
       <div className="header__wrapper container">
         <div className="header__top">
           {isMobile && <button className="header__hamburger-menu" type="button" aria-label="Открыть меню"
-          onClick={handleMenuOpening}></button>}
+          onClick={handleBurgerMenuClick}></button>}
           <Logo name={`header`} type={isMobile ? `mobile` : ``} />
           {isMobile && isMenuOpened && <button className="header__close-menu" type="button" aria-label="Закрыть меню"
-          onClick={handleMenuClosing}></button>}
+          onClick={handleCloseButtonClick}></button>}
         </div>
         <div className="header__navigation">
           <Navigation isCompactMenu={isTablet} isMobileMenu={isMobile} isMenuOpened={isMenuOpened}
