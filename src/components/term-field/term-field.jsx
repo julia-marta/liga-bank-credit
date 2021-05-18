@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Label from "../label/label";
 import InputSuffixed from "../input-suffixed/input-suffixed";
 import Range from "../range/range";
-import {parseNumberToString, isNumbersOnly} from "../../utils";
+import {parseNumberToString, isNumbersOnly, declineNumeral} from "../../utils";
 
 const TermField = ({name, label, suffix, minValue, maxValue, value, setValue}) => {
   const stringValue = parseNumberToString(value);
@@ -86,8 +86,8 @@ const TermField = ({name, label, suffix, minValue, maxValue, value, setValue}) =
       isError={isError} onChangeInput={handleInputChange} onBlurInput={handleInputBlur} />
       <Range minValue={minValue} maxValue={maxValue} currentValue={value} step={1} onChangeRange={handleRangeChange} />
       <div className="form__range-label form__range-label--double">
-        <span>{badTerm === `less` ? `< ` : ``} {minValue} лет</span>
-        <span>{badTerm === `more` ? `> ` : ``} {maxValue} лет</span>
+        <span>{badTerm === `less` ? `< ` : ``} {minValue} {declineNumeral(minValue, ...suffix)}</span>
+        <span>{badTerm === `more` ? `> ` : ``} {maxValue} {declineNumeral(maxValue, ...suffix)}</span>
       </div>
     </Fragment>
   );

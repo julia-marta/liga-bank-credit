@@ -12,7 +12,7 @@ const {NAME, PHONE, EMAIL} = ApplicationFormField;
 
 const ApplicationForm = ({clientData, onChangeInput, isErrorsVisible, setErrors, setErrorsVisible}) => {
 
-  const inputName= useRef();
+  const inputName = useRef();
 
   const errors = validateFields(clientData);
 

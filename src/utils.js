@@ -1,18 +1,18 @@
 export const parseNumberToString = (value) => {
   return value.toLocaleString();
-}
+};
 
 export const parseFractionToString = (value) => {
   return value.toLocaleString(undefined, { minimumFractionDigits: 2});
-}
+};
 
 export const formatString = (string) => {
   return string.replace(/\s/g, '');
-}
+};
 
 export const isNumbersOnly = (value) => {
   return (/^[0-9 ]*$/.test(value));
-}
+};
 
 export const validateFields = (fields) => {
 
@@ -26,9 +26,26 @@ export const validateFields = (fields) => {
 };
 
 
-export const getInitialFee = (propertyValue) => {
-  return Math.round(propertyValue * 0.1);
-}
+export const getInitialFee = (propertyValue, percent) => {
+  return Math.round(propertyValue * percent);
+};
+
+export const getMortgageRate = (propertyValue, initialFee, {normal, low}) => {
+  return initialFee >= propertyValue * 0.15 ? low : normal;
+};
+
+export const getAutoRate = (propertyValue, isComprehensive, isInsurance, {normal, low, lowest, gainful}) => {
+
+  if (isComprehensive && isInsurance) {
+    return gainful;
+  } else if (isComprehensive || isInsurance) {
+    return lowest;
+  } else if (propertyValue >= 2000000) {
+    return low;
+  } else {
+    return normal;
+  }
+};
 
 export const getAnnuityPayment = (sum, rate, term) => {
 
@@ -38,11 +55,11 @@ export const getAnnuityPayment = (sum, rate, term) => {
   const payment = (sum * monthRate) / (1 - (1 / Math.pow((1 + monthRate), termInMonths)));
 
   return Math.round(payment);
-}
+};
 
 export const getMinIncome = (payment) => {
   return Math.round(payment * 100 / 45);
-}
+};
 
 export const getInputSize = (stringValue, value) => {
     let size;
@@ -59,7 +76,7 @@ export const getInputSize = (stringValue, value) => {
     }
 
     return size;
-}
+};
 
 export const declineNumeral = (number, singular, genitive, plural) => {
   let form;

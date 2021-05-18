@@ -31,7 +31,10 @@ export const SLIDER_TRANSITION = 0.7;
 
 export const OFFER_ITEMS = [{
   key: `sum`,
-  label: `Сумма ипотеки`,
+  label: {
+    mortgage: `Сумма ипотеки`,
+    auto: `Сумма автокредита`
+  },
   currency: [`рубль`, `рубля`, `рублей`]
 },
 {
@@ -285,7 +288,10 @@ export const Key = {
 export const InputControl = {
   DECREASE: `decrease`,
   INCREASE: `increase`,
-  STEP: 100000
+  STEP: {
+    mortgage: 100000,
+    auto: 50000,
+  },
 };
 
 export const ModalType = {
@@ -345,29 +351,60 @@ export const CalculatorFormField = {
   PROPERTY: {
     legend: `Ввод стоимости недвижимости`,
     name: `property`,
-    label: `Стоимость недвижимости`,
+    label: {
+      mortgage: `Стоимость недвижимости`,
+      auto: `Стоимость автомобиля`
+    },
     suffix: [`рубль`, `рубля`, `рублей`],
-    min: 1200000,
-    max: 25000000,
+    min: {
+      mortgage: 1200000,
+      auto: 500000,
+    },
+    max: {
+      mortgage: 25000000,
+      auto: 5000000,
+    },
   },
   INITIAL_FEE: {
     legend: `Ввод первоначального взноса`,
     name: `initial`,
     label: `Первоначальный взнос`,
     suffix: [`рубль`, `рубля`, `рублей`],
+    percent: {
+      mortgage: 0.1,
+      auto: 0.2,
+    },
   },
   CREDIT_TERM: {
     legend: `Ввод срока кредитования`,
     name: `term`,
     label: `Срок кредитования`,
     suffix: [`год`, `года`, `лет`],
-    min: 5,
-    max: 30,
+    min: {
+      mortgage: 5,
+      auto: 1,
+    },
+    max: {
+      mortgage: 30,
+      auto: 5,
+    },
   },
-  MATERNAL_CAPITAL: {
-    legend: `Использование материнского капитала`,
-    name: `maternal`,
-    label: `Использовать материнский капитал`,
+  CHECKBOX: {
+    mortgage: [{
+      legend: `Использование материнского капитала`,
+      name: `maternal`,
+      label: `Использовать материнский капитал`,
+    }],
+    auto: [{
+      legend: `Оформление КАСКО`,
+      name: `comprehensive`,
+      label: `Оформить КАСКО в нашем банке`,
+    },
+    {
+      legend: `Оформление страхования жизни`,
+      name: `insurance`,
+      label: `Оформить Страхование жизни в нашем банке`,
+    }]
   }
 };
 
@@ -394,8 +431,16 @@ export const ApplicationFormField = {
 };
 
 export const Rate = {
-  NORMAL: 9.40,
-  LOW: 8.50,
+  MORTGAGE: {
+    normal: 9.40,
+    low: 8.50
+  },
+  AUTO: {
+    normal: 16,
+    low: 15,
+    lowest: 8.50,
+    gainful: 3.50
+  }
 };
 
 export const MinCreditSum = {

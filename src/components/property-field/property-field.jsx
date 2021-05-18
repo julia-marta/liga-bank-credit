@@ -5,9 +5,12 @@ import InputSuffixed from "../input-suffixed/input-suffixed";
 import {parseNumberToString, formatString, isNumbersOnly, getInitialFee} from "../../utils";
 import {InputControl} from "../../const";
 
-const PropertyField = ({name, label, suffix, minValue, maxValue, value, setValue, setInitialFeeValue}) => {
+const PropertyField = ({purpose, name, label, suffix, minValue, maxValue, value, setValue, setInitialFeeValue, initialFeePercent}) => {
 
   const stringValue = parseNumberToString(value);
+  const minStringValue = parseNumberToString(minValue);
+  const maxStringValue = parseNumberToString(maxValue);
+  const step = InputControl.STEP[purpose];
 
   const [isError, setError] = useState(false);
 
@@ -33,9 +36,9 @@ const PropertyField = ({name, label, suffix, minValue, maxValue, value, setValue
       }
 
       setValue(numberPropertyValue);
-      setInitialFeeValue(getInitialFee(numberPropertyValue))
+      setInitialFeeValue(getInitialFee(numberPropertyValue, initialFeePercent));
 
-    }, [minValue, maxValue, isError, setValue, setInitialFeeValue]
+    }, [minValue, maxValue, isError, setValue, setInitialFeeValue, initialFeePercent]
   );
 
   const handleInputBlur = useCallback(
@@ -65,30 +68,30 @@ const PropertyField = ({name, label, suffix, minValue, maxValue, value, setValue
 
       switch (evt.target.id) {
         case InputControl.DECREASE:
-          const decreasedValue = value - InputControl.STEP;
+          const decreasedValue = value - step;
 
           if (decreasedValue < minValue) {
             return;
           }
 
           setValue(decreasedValue);
-          setInitialFeeValue(getInitialFee(decreasedValue))
+          setInitialFeeValue(getInitialFee(decreasedValue, initialFeePercent))
           break;
         case InputControl.INCREASE:
-          const increasedValue = value + InputControl.STEP;
+          const increasedValue = value + step;
 
           if (increasedValue > maxValue) {
             return;
           }
 
           setValue(increasedValue);
-          setInitialFeeValue(getInitialFee(increasedValue))
+          setInitialFeeValue(getInitialFee(increasedValue, initialFeePercent))
           break;
         default:
           return;
       }
 
-    }, [minValue, maxValue, value, setValue, setInitialFeeValue]
+    }, [value, step, minValue, setValue, setInitialFeeValue, initialFeePercent, maxValue]
   );
 
   return (
@@ -97,18 +100,20 @@ const PropertyField = ({name, label, suffix, minValue, maxValue, value, setValue
       <InputSuffixed name={name} suffix={suffix} stringValue={stringValue} value={value}
         isError={isError} isErrorMessage={isError} isControls={true} onChangeInput={handleInputChange}
         onBlurInput={handleInputBlur} onClickControl={handleControlClick} />
-      <span className="form__sublabel">От 1 200 000&nbsp; до 25 000 000 рублей</span>
+      <span className="form__sublabel">{`От ${minStringValue} до ${maxStringValue} рублей`}</span>
     </Fragment>
     );
 }
 
 PropertyField.propTypes = {
+  purpose: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   suffix: PropTypes.arrayOf(PropTypes.string).isRequired,
   minValue: PropTypes.number.isRequired,
   maxValue: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
+  initialFeePercent: PropTypes.number.isRequired,
   setValue: PropTypes.func.isRequired,
   setInitialFeeValue: PropTypes.func.isRequired,
 }

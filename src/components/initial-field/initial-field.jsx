@@ -5,7 +5,9 @@ import InputSuffixed from "../input-suffixed/input-suffixed";
 import Range from "../range/range";
 import {parseNumberToString, formatString, isNumbersOnly, getInitialFee} from "../../utils";
 
-const InitialField = ({name, label, suffix, minValue, maxValue, value, setValue}) => {
+const STEP = 0.05;
+
+const InitialField = ({name, label, suffix, minValue, maxValue, value, initialFeePercent, setValue}) => {
 
   const [isError, setError] = useState(false);
   const [badInitialFee, setBadInitialFee] = useState(false);
@@ -15,12 +17,12 @@ const InitialField = ({name, label, suffix, minValue, maxValue, value, setValue}
   if (badInitialFee) {
     actualValue = value;
   } else {
-    actualValue = value < minValue ? minValue : value > maxValue ? getInitialFee(maxValue) : value;
+    actualValue = value < minValue ? minValue : value > maxValue ? getInitialFee(maxValue, initialFeePercent) : value;
   }
 
   const stringValue = parseNumberToString(actualValue);
 
-  const rangeStep = Math.round(maxValue * 0.05);
+  const rangeStep = Math.round(maxValue * STEP);
   const percentage = maxValue ? Math.round(actualValue / maxValue * 100) : 0;
 
   const handleInputChange = useCallback(
@@ -77,13 +79,13 @@ const InitialField = ({name, label, suffix, minValue, maxValue, value, setValue}
       }
 
       if (actualValue > maxValue) {
-        setValue(getInitialFee(maxValue));
+        setValue(getInitialFee(maxValue, initialFeePercent));
         return;
       }
 
       return;
 
-    }, [actualValue, minValue, maxValue, isError, badInitialFee, setValue]
+    }, [isError, badInitialFee, actualValue, minValue, maxValue, setValue, initialFeePercent]
   );
 
   const handleRangeChange = useCallback(
@@ -113,6 +115,7 @@ InitialField.propTypes = {
   minValue: PropTypes.number.isRequired,
   maxValue: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
+  initialFeePercent: PropTypes.number.isRequired,
   setValue: PropTypes.func.isRequired,
 }
 

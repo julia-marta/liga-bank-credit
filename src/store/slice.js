@@ -12,10 +12,12 @@ const defaultClientData = {
 };
 
 const defaultCreditData = {
-  propertyValue: 2000000,
-  initialFee: 0,
-  creditTerm: 5,
-  isMaternalCapital: false,
+  propertyValue: -1,
+  initialFee: -1,
+  creditTerm: -1,
+  maternal: false,
+  comprehensive: false,
+  insurance: false
 };
 
 const savedUserData = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : defaultUserData;
@@ -46,8 +48,8 @@ const ligaBankSlice = createSlice({
     setCreditTerm(state, action) {
       state.creditData.creditTerm = action.payload;
     },
-    setMaternalCapital(state, action) {
-      state.creditData.isMaternalCapital = action.payload;
+    setCheckboxValue(state, action) {
+      state.creditData[action.payload.name] = action.payload.value;
     },
     saveApplication(state, action) {
       state.applications.push({...action.payload, number: state.currentApplicationNumber, client: state.clientData});
@@ -78,7 +80,7 @@ export const {
     setPropertyValue,
     setInitialFee,
     setCreditTerm,
-    setMaternalCapital,
+    setCheckboxValue,
     saveApplication,
     saveClientData,
     clearUserData,

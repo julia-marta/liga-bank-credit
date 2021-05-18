@@ -1,30 +1,41 @@
-import React, {Fragment, useEffect, useCallback} from 'react';
+import React, {Fragment, useEffect, useCallback, useState, useRef} from 'react';
 import PropTypes from "prop-types";
-import {parseNumberToString, parseFractionToString, getAnnuityPayment, getMinIncome, declineNumeral} from "../../utils";
-import {OFFER_ITEMS, MATERNAL_CAPITAL, Rate, MinCreditSum} from "../../const";
+import {parseNumberToString, parseFractionToString, getAnnuityPayment, getAutoRate, getMortgageRate, getMinIncome, declineNumeral} from "../../utils";
+import {OFFER_ITEMS, MATERNAL_CAPITAL, Rate, MinCreditSum, CreditPurpose} from "../../const";
 
-const Offer = ({propertyValue, initialFee, isMaternalCapital, creditTerm, purpose, onClickCheckout, onChangeData}) => {
+const MIN_COLUMN_WIDTH = 155;
 
-    useEffect(() => {
-      onChangeData();
+const Offer = ({propertyValue, initialFee, creditTerm, creditPurpose, isMaternalCapital, isComprehensive, isInsurance, onClickCheckout, onChangeData}) => {
+
+  useEffect(() => {
+    onChangeData();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [propertyValue, initialFee, creditTerm, isMaternalCapital, purpose]);
+  }, [propertyValue, initialFee, creditTerm, creditPurpose, isMaternalCapital, isComprehensive, isInsurance]);
 
-    const isRateLow = initialFee >= propertyValue * 0.15;
+  const columnItem = useRef(null);
+  const [columnWidth, setColumnWidth] = useState(MIN_COLUMN_WIDTH);
 
-    const sum = propertyValue - initialFee - (isMaternalCapital ? MATERNAL_CAPITAL : 0);
-    const rate = isRateLow ? Rate.LOW : Rate.NORMAL;
-    const payment = getAnnuityPayment(sum, rate, creditTerm);
-    const income = getMinIncome(payment);
+  const isMortgage = creditPurpose === CreditPurpose.MORTGAGE.type;
 
-    const isRejection = sum < MinCreditSum.MORTGAGE;
+  const sum = propertyValue - initialFee - (isMortgage && isMaternalCapital ? MATERNAL_CAPITAL : 0);
+  const rate = isMortgage ? getMortgageRate(propertyValue, initialFee, Rate.MORTGAGE) : getAutoRate(propertyValue, isComprehensive, isInsurance, Rate.AUTO);
+  const payment = getAnnuityPayment(sum, rate, creditTerm);
+  const income = getMinIncome(payment);
 
-    const actualValues = {
-      sum: parseNumberToString(sum),
-      rate: parseFractionToString(rate),
-      payment: parseNumberToString(payment),
-      income: parseNumberToString(income),
-    };
+  useEffect(() => {
+    setColumnWidth(columnItem.current ? columnItem.current.offsetWidth : MIN_COLUMN_WIDTH)
+  }, [income]);
+
+  const isRejection = isMortgage ? sum < MinCreditSum.MORTGAGE : sum < MinCreditSum.AUTO;
+  const rejectSum = isMortgage ? parseNumberToString(MinCreditSum.MORTGAGE) : parseNumberToString(MinCreditSum.AUTO);
+  const rejectCreditTitle = isMortgage ? `ипотечные кредиты` : `автокредиты`;
+
+  const actualValues = {
+    sum: parseNumberToString(sum),
+    rate: parseFractionToString(rate),
+    payment: parseNumberToString(payment),
+    income: parseNumberToString(income),
+  };
 
   const handleCheckoutButtonClick = useCallback(
     (evt) => {
@@ -34,21 +45,21 @@ const Offer = ({propertyValue, initialFee, isMaternalCapital, creditTerm, purpos
   );
 
   return (
-    <div className="calculator__offer offer">
+    <div  className="calculator__offer offer">
       {!isRejection && <Fragment>
       <h3 className="offer__title">Наше предложение</h3>
       <ul className="offer__items">
         {OFFER_ITEMS.map((item, index) => {
-          return <li key={index + 1} className="offer__item">
+          return <li ref={index === 3 ? columnItem : null} key={index + 1} className="offer__item" style={index === 1 ? {width: `${columnWidth}px`} : {}}>
           <p className="offer__value">{actualValues[item.key]}{item.currency ? ` ${declineNumeral(actualValues[item.key], ...item.currency)}` : `%`}</p>
-          <span className="offer__subtitle">{item.label}</span>
+          <span className="offer__subtitle">{typeof item.label === `object` ? item.label[creditPurpose] : item.label}</span>
         </li>
         })}
       </ul>
       <button className="form__submit form__submit--checkout button" type="button" onClick={handleCheckoutButtonClick}>Оформить заявку</button>
     </Fragment>}
     {isRejection && <Fragment>
-      <h3 className="offer__title">Наш банк не выдаёт ипотечные кредиты меньше 500 000 рублей.</h3>
+      <h3 className="offer__title">{`Наш банк не выдаёт ${rejectCreditTitle} меньше ${rejectSum} рублей.`}</h3>
       <p className="offer__rejection">Попробуйте использовать другие параметры для расчёта.</p>
       </Fragment>}
     </div>

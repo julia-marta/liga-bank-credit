@@ -6,7 +6,6 @@ import StepOne from "../step-one/step-one";
 import StepTwo from "../step-two/step-two";
 import StepThree from "../step-three/step-three";
 import Offer from "../offer/offer";
-
 import {saveApplication, clearClientData, clearCreditData} from "../../store/slice";
 import {SectionType, CreditPurpose, ModalType} from "../../const";
 
@@ -15,6 +14,8 @@ const Calculator = ({
     initialFee,
     creditTerm,
     isMaternalCapital,
+    isComprehensive,
+    isInsurance,
     saveNewApplication,
     clearCalculatorForm,
     clearApplicationForm,
@@ -28,14 +29,11 @@ const Calculator = ({
 
   const purposeName = purpose ? CreditPurpose[purpose.toUpperCase()].label : ``;
 
-  const closeApplicationForm = useCallback(
-    () => {
-      if (isCheckout) {
-        setCheckout(false)
-      }
-
-      return;
-    }, [isCheckout]
+  const handleCreditSelect = useCallback(
+    (newPurpose) => {
+      setPurpose(newPurpose);
+      clearCalculatorForm();
+    }, [clearCalculatorForm]
   );
 
   const handleFormSubmit = useCallback(
@@ -62,20 +60,31 @@ const Calculator = ({
     }, [isErrors, saveNewApplication, purposeName, propertyValue, initialFee, creditTerm, clearCalculatorForm, clearApplicationForm, showPopUp]
   );
 
+  const closeApplicationForm = useCallback(
+    () => {
+      if (isCheckout) {
+        setCheckout(false)
+      }
+
+      return;
+    }, [isCheckout]
+  );
+
   return (
     <Section name={SectionType.CALCULATOR.name} title={SectionType.CALCULATOR.title}>
       <form action="#" className="calculator__form form" onSubmit={handleFormSubmit}>
         <div className="calculator__steps-wrapper">
-          <StepOne creditPurpose={purpose} onChangePurpose={setPurpose} />
+          <StepOne creditPurpose={purpose} onChangePurpose={handleCreditSelect} />
 
-          {purpose && <StepTwo />}
+          {purpose && <StepTwo creditPurpose={purpose} />}
         </div>
         {purpose &&
-          <Offer propertyValue={propertyValue} initialFee={initialFee} isMaternalCapital={isMaternalCapital}
-        creditTerm={creditTerm} purpose={purpose} onClickCheckout={setCheckout} onChangeData={closeApplicationForm} />}
+          <Offer propertyValue={propertyValue} initialFee={initialFee} creditTerm={creditTerm}
+          isMaternalCapital={isMaternalCapital} isComprehensive={isComprehensive} isInsurance={isInsurance}
+          creditPurpose={purpose} onClickCheckout={setCheckout} onChangeData={closeApplicationForm} />}
 
         {isCheckout &&
-        <StepThree propertyValue={propertyValue} initialFee={initialFee} creditTerm={creditTerm} purpose={purpose} 
+        <StepThree propertyValue={propertyValue} initialFee={initialFee} creditTerm={creditTerm} purpose={purpose}
         purposeName={purposeName} isErrorsVisible={isErrorsVisible} setErrors={setErrors} setErrorsVisible={setErrorsVisible} />}
       </form>
     </Section>
@@ -87,6 +96,8 @@ Calculator.propTypes = {
   initialFee: PropTypes.number.isRequired,
   creditTerm: PropTypes.number.isRequired,
   isMaternalCapital: PropTypes.bool.isRequired,
+  isComprehensive: PropTypes.bool.isRequired,
+  isInsurance: PropTypes.bool.isRequired,
   saveNewApplication: PropTypes.func.isRequired,
   clearApplicationForm: PropTypes.func.isRequired,
   clearCalculatorForm: PropTypes.func.isRequired,
@@ -97,7 +108,9 @@ const mapStateToProps = (store) => ({
   propertyValue: store.creditData.propertyValue,
   initialFee: store.creditData.initialFee,
   creditTerm: store.creditData.creditTerm,
-  isMaternalCapital: store.creditData.isMaternalCapital,
+  isMaternalCapital: store.creditData.maternal,
+  isComprehensive: store.creditData.comprehensive,
+  isInsurance: store.creditData.insurance,
 });
 
 const mapDispatchToProps = (dispatch) => ({
