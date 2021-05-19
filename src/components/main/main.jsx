@@ -13,7 +13,7 @@ const Main = ({isMobile, isTablet, showPopUp}) => {
       <Slider isSwipeable={isMobile || isTablet} />
       <Services isSwipeable={isMobile || isTablet} />
       <Calculator showPopUp={showPopUp} />
-      <Branches />
+      <Branches isMobile={isMobile} isTablet={isTablet} />
     </main>
   );
 };

@@ -285,6 +285,62 @@ export const Key = {
   ESCAPE: `Escape`
 };
 
+export const MapParam = {
+  PLACEMARK: {
+    width: 35,
+    height: 40,
+    image: `svg/pin.svg`,
+    locations: [
+      {
+        name: `moscow`,
+        lati: `55.755819`,
+        longi: `37.617644`
+      },
+      {
+        name: `saratov`,
+        lati: `51.533562`,
+        longi: `46.034266`
+      },
+      {
+        name: `kazan`,
+        lati: `55.796127`,
+        longi: `49.106414`
+      },
+      {
+        name: `perm`,
+        lati: `58.010455`,
+        longi: `56.229443`
+      },
+      {
+        name: `tyumen`,
+        lati: `57.152985`,
+        longi: `65.541227`
+      },
+      {
+        name: `omsk`,
+        lati: `54.989347`,
+        longi: `73.368221`
+      },
+      {
+        name: `novosibirsk`,
+        lati: `55.030204`,
+        longi: `82.920430`
+        },
+      {
+        name: `surgut`,
+        lati: `61.254035`,
+        longi: `73.396230`
+      }
+    ]
+  },
+  DESKTOP: {
+    latitude: `56.938`,
+    longitude: `60.597`,
+    zoom: 5,
+  },
+
+};
+
 export const InputControl = {
   DECREASE: `decrease`,
   INCREASE: `increase`,
