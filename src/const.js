@@ -138,17 +138,6 @@ export const Service = {
   }
 };
 
-export const SectionType = {
-  CALCULATOR: {
-    name: `calculator`,
-    title: `Кредитный калькулятор`
-  },
-  BRANCHES: {
-    name: `branches`,
-    title: `Отделения Лига Банка`
-  }
-};
-
 export const CreditPurpose = {
   MORTGAGE: {
     type: `mortgage`,
@@ -286,6 +275,9 @@ export const Key = {
 };
 
 export const MapParam = {
+  LATITUDE: `56.938`,
+  LONGITUDE: `60.597`,
+  ZOOM: 5,
   PLACEMARK: {
     width: 35,
     height: 40,
@@ -333,12 +325,6 @@ export const MapParam = {
       }
     ]
   },
-  DESKTOP: {
-    latitude: `56.938`,
-    longitude: `60.597`,
-    zoom: 5,
-  },
-
 };
 
 export const InputControl = {

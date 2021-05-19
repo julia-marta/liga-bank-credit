@@ -2,7 +2,7 @@ import React, {Fragment, useState, useEffect, useCallback} from 'react';
 import {useMediaQuery} from 'react-responsive';
 import Header from "../header/header";
 import Main from "../main/main";
-// import Footer from "../footer/footer";
+import Footer from "../footer/footer";
 import Modal from "../modal/modal";
 import PopUp from "../pop-up/pop-up";
 import {Key, Viewport, defaultAnimation, defaultActiveModal} from "../../const";
@@ -74,7 +74,7 @@ const App = () => {
     <Fragment>
       <Header onLoginButtonClick={handleModalOpening} isMobile={isMobile} isTablet={isTablet} />
       <Main isMobile={isMobile} isTablet={isTablet} showPopUp={handleModalOpening} />
-      {/* <Footer /> */}
+      <Footer isMobile={isMobile} isTablet={isTablet} />
 
       {activeModal.login && <Modal isMobile={isMobile} animation={modalAnimation} onClose={handleModalClosing} 
         onError={handleModalError} onAnimation={handleModalAnimation} />}

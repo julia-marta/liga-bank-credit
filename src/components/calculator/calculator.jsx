@@ -1,13 +1,12 @@
 import React, {useState, useCallback} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
-import Section from "../section/section";
 import StepOne from "../step-one/step-one";
 import StepTwo from "../step-two/step-two";
 import StepThree from "../step-three/step-three";
 import Offer from "../offer/offer";
 import {saveApplication, clearClientData, clearCreditData} from "../../store/slice";
-import {SectionType, CreditPurpose, ModalType} from "../../const";
+import {CreditPurpose, ModalType} from "../../const";
 
 const Calculator = ({
     propertyValue,
@@ -71,23 +70,26 @@ const Calculator = ({
   );
 
   return (
-    <Section name={SectionType.CALCULATOR.name} title={SectionType.CALCULATOR.title}>
-      <form action="#" className="calculator__form form" onSubmit={handleFormSubmit}>
-        <div className="calculator__steps-wrapper">
-          <StepOne creditPurpose={purpose} onChangePurpose={handleCreditSelect} />
+    <section id="calculator" className="calculator">
+      <div className="calculator__wrapper container">
+        <h2 className="calculator__title">Кредитный калькулятор</h2>
+        <form action="#" className="calculator__form form" onSubmit={handleFormSubmit}>
+          <div className="calculator__steps-wrapper">
+            <StepOne creditPurpose={purpose} onChangePurpose={handleCreditSelect} />
 
-          {purpose && <StepTwo creditPurpose={purpose} />}
-        </div>
-        {purpose &&
-          <Offer propertyValue={propertyValue} initialFee={initialFee} creditTerm={creditTerm}
-          isMaternalCapital={isMaternalCapital} isComprehensive={isComprehensive} isInsurance={isInsurance}
-          creditPurpose={purpose} onClickCheckout={setCheckout} onChangeData={closeApplicationForm} />}
+            {purpose && <StepTwo creditPurpose={purpose} />}
+          </div>
+          {purpose &&
+            <Offer propertyValue={propertyValue} initialFee={initialFee} creditTerm={creditTerm}
+            isMaternalCapital={isMaternalCapital} isComprehensive={isComprehensive} isInsurance={isInsurance}
+            creditPurpose={purpose} onClickCheckout={setCheckout} onChangeData={closeApplicationForm} />}
 
-        {isCheckout &&
-        <StepThree propertyValue={propertyValue} initialFee={initialFee} creditTerm={creditTerm} purpose={purpose}
-        purposeName={purposeName} isErrorsVisible={isErrorsVisible} setErrors={setErrors} setErrorsVisible={setErrorsVisible} />}
-      </form>
-    </Section>
+          {isCheckout &&
+          <StepThree propertyValue={propertyValue} initialFee={initialFee} creditTerm={creditTerm} purpose={purpose}
+            purposeName={purposeName} isErrorsVisible={isErrorsVisible} setErrors={setErrors} setErrorsVisible={setErrorsVisible} />}
+        </form>
+      </div>
+    </section>
   );
 };
 

@@ -1,19 +1,19 @@
 import React from 'react';
 import {YMaps, Map, Placemark} from 'react-yandex-maps';
-import Section from "../section/section";
-import {SectionType, MapParam} from "../../const";
+import {MapParam} from "../../const";
 
-const {PLACEMARK, DESKTOP} = MapParam;
+const {LATITUDE, LONGITUDE, ZOOM, PLACEMARK} = MapParam;
 
-const Branches = ({isMobile, isTablet}) => {
-
-  const params = DESKTOP;
+const Branches = () => {
 
   return (
-    <Section name={SectionType.BRANCHES.name} title={SectionType.BRANCHES.title}>
+    <section id="branches" className="branches">
+      <div className="branches__wrapper">
+        <h2 className="branches__title">Отделения Лига Банка</h2>
+
       <YMaps>
           <div className="branches__map">
-            <Map defaultState={{ center: [params.latitude, params.longitude], zoom: params.zoom }} width='100%' height='100%' >
+            <Map defaultState={{ center: [LATITUDE, LONGITUDE], zoom: ZOOM }} width='100%' height='100%' >
               {PLACEMARK.locations.map((location, index) => {
                 return  <Placemark key={index + 1} geometry={[location.lati, location.longi]} options={{
                   iconLayout: `default#image`,
@@ -22,12 +22,12 @@ const Branches = ({isMobile, isTablet}) => {
                   iconImageOffset: [-17, -40]
                 }} />
               })}
-              
 
             </Map>
           </div>
         </YMaps>
-    </Section>
+      </div>
+    </section>
   );
 };
 

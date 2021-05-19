@@ -1,6 +1,11 @@
+html{
+  height: 100%;
+}
+
 body {
   @include indents-none;
   @include font-weight;
+  height: 100%;
   font-family: "Roboto", "Arial", sans-serif;
   font-size: 16px;
   line-height: 18px;
@@ -11,4 +16,14 @@ body {
 a {
   color: $main-text;
   text-decoration: none;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.main {
+  flex-grow: 1;
 }

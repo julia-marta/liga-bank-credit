@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import Logo from "../logo/logo";
 import Navigation from "../navigation/navigation";
 
-
 const Header = ({onLoginButtonClick, isMobile, isTablet}) => {
 
   const [isMenuOpened, setMenuOpened] = useState(true);
