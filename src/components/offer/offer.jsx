@@ -3,9 +3,19 @@ import PropTypes from "prop-types";
 import {parseNumberToString, parseFractionToString, getAnnuityPayment, getAutoRate, getMortgageRate, getMinIncome, declineNumeral} from "../../utils";
 import {OFFER_ITEMS, MATERNAL_CAPITAL, Rate, MinCreditSum, CreditPurpose} from "../../const";
 
-const MIN_COLUMN_WIDTH = 155;
+const MIN_COLUMN_WIDTH = 40.57;
 
-const Offer = ({propertyValue, initialFee, creditTerm, creditPurpose, isMaternalCapital, isComprehensive, isInsurance, onClickCheckout, onChangeData}) => {
+const Offer = ({
+    propertyValue,
+    initialFee,
+    creditTerm,
+    creditPurpose,
+    isMaternalCapital,
+    isComprehensive,
+    isInsurance,
+    onClickCheckout,
+    onChangeData
+  }) => {
 
   useEffect(() => {
     onChangeData();
@@ -23,7 +33,7 @@ const Offer = ({propertyValue, initialFee, creditTerm, creditPurpose, isMaternal
   const income = getMinIncome(payment);
 
   useEffect(() => {
-    setColumnWidth(columnItem.current ? columnItem.current.offsetWidth : MIN_COLUMN_WIDTH)
+    setColumnWidth(columnItem.current ? (columnItem.current.offsetWidth / columnItem.current.parentElement.offsetWidth) * 100 : MIN_COLUMN_WIDTH)
   }, [income]);
 
   const isRejection = isMortgage ? sum < MinCreditSum.MORTGAGE : sum < MinCreditSum.AUTO;
@@ -35,7 +45,7 @@ const Offer = ({propertyValue, initialFee, creditTerm, creditPurpose, isMaternal
     rate: parseFractionToString(rate),
     payment: parseNumberToString(payment),
     income: parseNumberToString(income),
-  };
+    };
 
   const handleCheckoutButtonClick = useCallback(
     (evt) => {
@@ -50,7 +60,7 @@ const Offer = ({propertyValue, initialFee, creditTerm, creditPurpose, isMaternal
       <h3 className="offer__title">Наше предложение</h3>
       <ul className="offer__items">
         {OFFER_ITEMS.map((item, index) => {
-          return <li ref={index === 3 ? columnItem : null} key={index + 1} className="offer__item" style={index === 1 ? {width: `${columnWidth}px`} : {}}>
+          return <li ref={index === 3 ? columnItem : null} key={index + 1} className="offer__item" style={index === 1 ? {minWidth: `${columnWidth}%`} : {}}>
           <p className="offer__value">{actualValues[item.key]}{item.currency ? ` ${declineNumeral(actualValues[item.key], ...item.currency)}` : `%`}</p>
           <span className="offer__subtitle">{typeof item.label === `object` ? item.label[creditPurpose] : item.label}</span>
         </li>
@@ -69,8 +79,11 @@ const Offer = ({propertyValue, initialFee, creditTerm, creditPurpose, isMaternal
 Offer.propTypes = {
   propertyValue: PropTypes.number.isRequired,
   initialFee: PropTypes.number.isRequired,
-  isMaternalCapital: PropTypes.bool.isRequired,
   creditTerm: PropTypes.number.isRequired,
+  creditPurpose: PropTypes.string.isRequired,
+  isMaternalCapital: PropTypes.bool.isRequired,
+  isComprehensive: PropTypes.bool.isRequired,
+  isInsurance: PropTypes.bool.isRequired,
   onClickCheckout: PropTypes.func.isRequired,
   onChangeData: PropTypes.func.isRequired,
 }

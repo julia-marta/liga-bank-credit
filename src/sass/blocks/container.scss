@@ -2,23 +2,19 @@
   box-sizing: border-box;
   max-width: $max-content-width;
   margin: 0 auto;
-  padding: 0 98px;
-  // outline: 1px solid tomato;
+  padding: 0 6.8%;
 }
 
 @media (max-width: $max-tablet-width) {
   .container {
     max-width: $max-tablet-width;
-    padding: 0 45px;
-    // outline: 1px solid tomato;
+    padding: 0 5.85%;
   }
 }
 
 @media (max-width: $max-mobile-width) {
   .container {
     max-width: $max-mobile-width;
-    padding: 0 15px;
-    // outline: 1px solid tomato;
+    padding: 0 4.65%;
   }
 }
-

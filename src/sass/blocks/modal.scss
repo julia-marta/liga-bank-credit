@@ -120,6 +120,7 @@
 }
 
 @media (max-width: $max-tablet-width) {
+
   .modal__window {
     width: 678px;
     height: 493px;
@@ -138,6 +139,7 @@
 }
 
 @media (max-width: $max-mobile-width) {
+
   .modal__window {
     width: 290px;
     height: 455px;

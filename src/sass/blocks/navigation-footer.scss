@@ -16,12 +16,14 @@
 }
 
 @media (max-width: $max-tablet-width) {
+
   .navigation-footer {
     padding: 0;
   }
 }
 
 @media (max-width: $max-mobile-width) {
+
   .navigation-footer__link {
     padding: 4.5px 0;
     font-size: 14px;

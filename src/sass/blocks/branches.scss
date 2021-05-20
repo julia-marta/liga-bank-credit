@@ -9,18 +9,17 @@
   @include indents-none;
   @include font-weight($bold);
   margin-bottom: 55px;
-  margin-left: 98px;
+  margin-left: 7.2%;
   font-size: 41px;
   line-height: 59px;
 }
 
 .branches__map {
   box-sizing: border-box;
-  width: 1170px;
+  width: 85.7%;
   height: 462px;
   margin: 0 auto;
 }
-
 
 @media (max-width: $max-tablet-width) {
   .branches__wrapper {
@@ -31,13 +30,13 @@
 
   .branches__title {
     margin-bottom: 35px;
-    margin-left: 45px;
+    margin-left: 5.85%;
     font-size: 32px;
     line-height: 44px;
   }
 
   .branches__map {
-    width: 678px;
+    width: 88%;
     height: 462px;
   }
 }
@@ -51,7 +50,7 @@
 
   .branches__title {
     margin-bottom: 27px;
-    margin-left: 15px;
+    margin-left: 4.65%;
     font-size: 22px;
     line-height: 30px;
   }

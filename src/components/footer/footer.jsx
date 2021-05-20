@@ -1,4 +1,5 @@
 import React, {Fragment} from 'react';
+import PropTypes from "prop-types";
 import Logo from "../logo/logo";
 import Copyright from "../copyright/copyright";
 import NavigationFooter from "../navigation-footer/navigation-footer";
@@ -29,6 +30,11 @@ const Footer = ({isMobile, isTablet}) => {
       </div>
     </footer>
   );
+};
+
+Footer.propTypes = {
+  isMobile: PropTypes.bool.isRequired,
+  isTablet: PropTypes.bool.isRequired,
 };
 
 export default Footer;

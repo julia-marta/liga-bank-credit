@@ -13,7 +13,17 @@ import {getInitialFee} from "../../utils";
 
 const {PROPERTY, INITIAL_FEE, CREDIT_TERM, CHECKBOX} = CalculatorFormField;
 
-const StepTwo = ({creditPurpose, propertyValue, initialFee, creditTerm, checkboxValues, changePropertyValue, changeInitialFee, changeCreditTerm, changeCheckboxValue}) => {
+const StepTwo = ({
+    creditPurpose,
+    propertyValue,
+    initialFee,
+    creditTerm,
+    checkboxValues,
+    changePropertyValue,
+    changeInitialFee,
+    changeCreditTerm,
+    changeCheckboxValue
+  }) => {
 
   const initialFeePercent = INITIAL_FEE.percent[creditPurpose];
 
@@ -21,6 +31,7 @@ const StepTwo = ({creditPurpose, propertyValue, initialFee, creditTerm, checkbox
     if (propertyValue === -1) {
       changePropertyValue(PROPERTY.min[creditPurpose])
     }
+
     if (initialFee === -1) {
       changeInitialFee(getInitialFee(PROPERTY.min[creditPurpose], initialFeePercent));
     }
@@ -29,7 +40,6 @@ const StepTwo = ({creditPurpose, propertyValue, initialFee, creditTerm, checkbox
       changeCreditTerm(CREDIT_TERM.min[creditPurpose])
     }
   });
-
 
   return (
     <Fragment>
@@ -69,15 +79,15 @@ StepTwo.propTypes = {
   propertyValue: PropTypes.number.isRequired,
   initialFee: PropTypes.number.isRequired,
   creditTerm: PropTypes.number.isRequired,
-  changePropertyValue: PropTypes.func.isRequired,
-  changeInitialFee: PropTypes.func.isRequired,
-  changeCreditTerm: PropTypes.func.isRequired,
-  changeCheckboxValue: PropTypes.func.isRequired,
   checkboxValues: PropTypes.shape({
     maternal: PropTypes.bool,
     comprehensive: PropTypes.bool,
     insurance: PropTypes.bool,
   }).isRequired,
+  changePropertyValue: PropTypes.func.isRequired,
+  changeInitialFee: PropTypes.func.isRequired,
+  changeCreditTerm: PropTypes.func.isRequired,
+  changeCheckboxValue: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (store) => ({

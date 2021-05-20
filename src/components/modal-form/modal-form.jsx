@@ -98,6 +98,7 @@ ModalForm.propTypes = {
   saveUser: PropTypes.func.isRequired,
   clearForm: PropTypes.func.isRequired,
   onSubmitForm: PropTypes.func.isRequired,
+  onSubmitError: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (store) => ({

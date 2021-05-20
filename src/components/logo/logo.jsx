@@ -12,6 +12,7 @@ const Logo = ({name, type}) => {
     </div>
   );
 };
+
 Logo.propTypes = {
   name: PropTypes.string.isRequired,
   type: PropTypes.string

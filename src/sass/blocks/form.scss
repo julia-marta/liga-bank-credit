@@ -30,7 +30,7 @@
 
   &--phone,
   &--email {
-    width: 300px;
+    width: 47.7%;
   }
 }
 
@@ -418,11 +418,6 @@
     &--name {
       margin-bottom: 30px;
     }
-
-    &--phone,
-    &--email {
-      width: 324px;
-    }
   }
 
   .form__input--suffixed,
@@ -440,6 +435,7 @@
 }
 
 @media (max-width: $max-mobile-width) {
+
   .form__fieldset {
     margin-bottom: 12px;
 

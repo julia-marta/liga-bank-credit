@@ -41,7 +41,7 @@
 }
 
 .calculator__steps-wrapper {
-  width: 600px;
+  width: 51.3%;
 }
 
 .calculator__step {
@@ -134,7 +134,7 @@
   }
 
   .calculator__steps-wrapper {
-    width: 678px;
+    width: 100%;
   }
 
   .calculator__step {
@@ -176,10 +176,6 @@
     margin-bottom: 22px;
     font-size: 22px;
     line-height: 30px;
-  }
-
-  .calculator__steps-wrapper {
-    max-width: 290px;
   }
 
   .calculator__step {
@@ -231,5 +227,4 @@
     justify-content: flex-start;
     margin-bottom: 10px;
   }
-
 }

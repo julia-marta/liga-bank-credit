@@ -7,7 +7,19 @@ import ApplicationForm from "../application-form/application-form";
 import {saveClientData} from "../../store/slice";
 import {CalculatorStage} from "../../const";
 
-const StepThree = ({currentNumber, clientData, saveClient, propertyValue, initialFee, creditTerm, purpose, purposeName, isErrorsVisible, setErrors, setErrorsVisible}) => {
+const StepThree = ({
+    currentNumber,
+    clientData,
+    saveClient,
+    propertyValue,
+    initialFee,
+    creditTerm,
+    purpose,
+    purposeName,
+    isErrorsVisible,
+    setErrors,
+    setErrorsVisible
+  }) => {
 
   const [isAnimation, setAnimation] = useState(false);
 

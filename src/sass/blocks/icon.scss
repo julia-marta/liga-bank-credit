@@ -3,23 +3,23 @@
   pointer-events: none;
 
   &--deposits {
-    top: 30px;
-    left: 91px;
+    top: -6px;
+    left: 0;
   }
 
   &--credits {
-    top: 31px;
-    left: 86px;
+    top: -5px;
+    left: 0;
   }
 
   &--insurance {
-    top: 29px;
-    left: 73px;
+    top: -7px;
+    left: 0;
   }
 
   &--online {
-    top: 29px;
-    left: 60px;
+    top: -7px;
+    left: 0;
   }
 
   &--tick {
@@ -68,6 +68,7 @@
 }
 
 @media (max-width: $max-tablet-width) {
+
   .icon {
 
     &--login {
@@ -77,6 +78,7 @@
 }
 
 @media (max-width: $max-mobile-width) {
+
   .icon {
 
     &--close-mobile {

@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import Icon from "../icon/icon";
 import {IconType} from "../../const";
 
@@ -24,5 +24,19 @@ const TabItem = ({className, data}) => {
     </div>
   )
 }
+
+TabItem.propTypes = {
+  className: PropTypes.string.isRequired,
+  data: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    features: PropTypes.arrayOf(PropTypes.string).isRequired,
+    button: PropTypes.bool.isRequired,
+    subtitle: PropTypes.shape({
+        text: PropTypes.string,
+        link: PropTypes.string,
+      }),
+  }).isRequired,
+};
 
 export default TabItem;

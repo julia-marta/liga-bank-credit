@@ -46,10 +46,13 @@ const Tabs = ({isSwipeable, renderTab}) => {
           {Object.keys(Tab).map((tab, index) => (
             <li key={index + 1} className="services__nav-item">
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <a href="#" id={index + 1} className={`services__nav-link ${Tab[tab].index === activeTab ? `services__nav-link--active` : ``}`}
-              onClick={handleTabClick}>
-                <Icon icon={IconType[tab]} />
-                {Service[tab].name}
+              <a href="#" id={index + 1}
+                className={`services__nav-link ${Tab[tab].index === activeTab ? `services__nav-link--active` : ``}`}
+                onClick={handleTabClick}>
+                <span className="services__nav-icon">
+                  {Service[tab].name}
+                  <Icon icon={IconType[tab]} />
+                </span>
               </a>
             </li>
           ))}

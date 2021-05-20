@@ -42,8 +42,8 @@
   box-sizing: border-box;
   min-height: 400px;
   padding-top: 102px;
-  padding-left: 268px;
-  background-position: center top;
+  padding-left: 18.6%;
+  background-position: top center;
   background-repeat: no-repeat;
 
   @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
@@ -88,6 +88,7 @@
 }
 
 @media (max-width: $max-tablet-width) {
+
   .slide--1 .slide__wrapper {
     background-image: url("../../img/tablet_slide_1.jpg");
 
@@ -115,7 +116,7 @@
   .slide__wrapper {
     min-height: 300px;
     padding-top: 65px;
-    padding-left: 86px;
+    padding-left: 11.2%;
 
     @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
       background-size: $tablet-width auto;
@@ -144,6 +145,7 @@
 }
 
 @media (max-width: $max-mobile-width) {
+
   .slide--1 .slide__wrapper {
     background-image: url("../../img/mobile_slide_1.jpg");
 
@@ -171,7 +173,8 @@
   .slide__wrapper {
     min-height: 226px;
     padding-top: 39px;
-    padding-left: 15px;
+    padding-left: 4.65%;
+    background-position: top right;
 
     @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
       background-size: $mobile-width auto;
