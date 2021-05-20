@@ -3,13 +3,15 @@ import PropTypes from 'prop-types';
 import Error from "../error/error";
 import {getInputSize, declineNumeral} from "../../utils";
 
+const MIN_INPUT_WIDTH = 25;
+
 const InputSuffixed = ({name, suffix, stringValue, value, isError, isErrorMessage, isControls, onChangeInput, onBlurInput, onClickControl}) => {
     return (
       <div className={`form__input form__input--wrapper ${isError ? `form__input--error` : ``}`} tabIndex="0" >
         {isControls && <button id="decrease" className="form__сontrol form__сontrol--decrease" type="button" aria-label="Уменьшить" onClick={onClickControl} />}
 
         <input className="form__input form__input--suffixed" type="text" id={name} name={name}
-          value={stringValue} size={stringValue ? getInputSize(stringValue, value) : 1} maxLength="10"
+          value={stringValue} style={{width: `${stringValue ? getInputSize(stringValue, value) : MIN_INPUT_WIDTH}px`}} maxLength="10"
           onChange={onChangeInput} onBlur={onBlurInput} />
         <span className="form__suffix">{declineNumeral(value, ...suffix)}</span>
 

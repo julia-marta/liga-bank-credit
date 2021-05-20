@@ -1,5 +1,5 @@
 export const parseNumberToString = (value) => {
-  return value.toLocaleString();
+  return value.toLocaleString('ru-RU');
 };
 
 export const parseFractionToString = (value) => {
@@ -61,18 +61,21 @@ export const getMinIncome = (payment) => {
   return Math.round(payment * 100 / 45);
 };
 
+const MIN_INPUT_WIDTH = 10;
+const INPUT_SPACES = 15;
+
 export const getInputSize = (stringValue, value) => {
-    let size;
+    let size = stringValue.length;;
 
     switch (true) {
       case value > 999 && value <= 999999:
-        size = stringValue.length - 1;
+        size = ((stringValue.length - 1) * MIN_INPUT_WIDTH) + INPUT_SPACES;
         break;
       case value > 999999:
-        size = stringValue.length - 2;
+        size = ((stringValue.length - 1.5) * MIN_INPUT_WIDTH) + INPUT_SPACES;
         break;
       default:
-        size = stringValue.length;
+        size = (stringValue.length * MIN_INPUT_WIDTH) + INPUT_SPACES;
     }
 
     return size;
