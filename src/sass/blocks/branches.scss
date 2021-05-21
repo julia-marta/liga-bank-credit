@@ -1,5 +1,5 @@
 .branches__wrapper {
-  max-width: $max-content-width;
+  min-height: 462px;
   margin: 0 auto;
   padding-top: 62px;
   padding-bottom: 109px;
@@ -23,7 +23,6 @@
 
 @media (max-width: $max-tablet-width) {
   .branches__wrapper {
-    max-width: $max-tablet-width;
     padding-top: 35px;
     padding-bottom: 79px;
   }
@@ -37,13 +36,13 @@
 
   .branches__map {
     width: 88%;
-    height: 462px;
   }
 }
 
 @media (max-width: $max-mobile-width) {
 
   .branches__wrapper {
+    min-height: 381px;
     padding-top: 20px;
     padding-bottom: 60px;
   }

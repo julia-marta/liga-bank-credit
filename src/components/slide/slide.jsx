@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from "prop-types";
 
-const Slide = ({index, text, button}) => {
+const Slide = ({index, text, button, isWebP}) => {
 
   return (
     <div className={`slide slide--${index}`}>
-      <div className="slide__wrapper container">
+      <div className={`slide__wrapper ${isWebP ? `slide__wrapper--webp` : `slide__wrapper--no-webp`} container`}>
           <p className="slide__title">Лига Банк</p>
           <p className="slide__subtitle">{text}</p>
           {/* eslint-disable-next-line */}
@@ -23,6 +23,7 @@ Slide.propTypes = {
     link: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
   }),
+  isWebP: PropTypes.bool.isRequired,
 }
 
 export default Slide;

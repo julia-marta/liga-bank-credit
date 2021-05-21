@@ -24,6 +24,9 @@
 
   &--deposits::after {
     top: 60px;
+  }
+
+  &--deposits.tab--no-webp::after {
     background-image: url("../../img/desktop_tab_1.jpg");
 
     @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
@@ -31,8 +34,19 @@
     }
   }
 
+  &--deposits.tab--webp::after {
+    background-image: url("../../img/desktop_tab_1.webp");
+
+    @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+    background-image: url("../../img/desktop_tab_1@2x.webp");
+    }
+  }
+
   &--credits::after {
     top: 55px;
+  }
+
+  &--credits.tab--no-webp::after {
     background-image: url("../../img/desktop_tab_2.jpg");
 
     @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
@@ -40,8 +54,19 @@
     }
   }
 
-  &--insurance::after  {
+  &--credits.tab--webp::after {
+    background-image: url("../../img/desktop_tab_2.webp");
+
+    @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+    background-image: url("../../img/desktop_tab_2@2x.webp");
+    }
+  }
+
+  &--insurance::after {
     top: 48px;
+  }
+
+  &--insurance.tab--no-webp::after  {
     background-image: url("../../img/desktop_tab_3.jpg");
 
     @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
@@ -49,12 +74,31 @@
     }
   }
 
+  &--insurance.tab--webp::after {
+    background-image: url("../../img/desktop_tab_3.webp");
+
+    @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+    background-image: url("../../img/desktop_tab_3@2x.webp");
+    }
+  }
+
   &--online::after {
     top: 53px;
+  }
+
+  &--online.tab--no-webp::after {
     background-image: url("../../img/desktop_tab_4.jpg");
 
     @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
     background-image: url("../../img/desktop_tab_4@2x.jpg");
+    }
+  }
+
+  &--online.tab--webp::after {
+    background-image: url("../../img/desktop_tab_4.webp");
+
+    @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+    background-image: url("../../img/desktop_tab_4@2x.webp");
     }
   }
 }
@@ -129,7 +173,7 @@
       }
     }
 
-    &--deposits::after {
+    &--deposits.tab--no-webp::after {
       background-image: url("../../img/tablet_tab_1.jpg");
 
       @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
@@ -137,7 +181,15 @@
       }
     }
 
-    &--credits::after {
+    &--deposits.tab--webp::after {
+      background-image: url("../../img/tablet_tab_1.webp");
+
+      @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+      background-image: url("../../img/tablet_tab_1@2x.webp");
+      }
+    }
+
+    &--credits.tab--no-webp::after {
       background-image: url("../../img/tablet_tab_2.jpg");
 
       @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
@@ -145,7 +197,15 @@
       }
     }
 
-    &--insurance::after {
+    &--credits.tab--webp::after {
+      background-image: url("../../img/tablet_tab_2.webp");
+
+      @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+      background-image: url("../../img/tablet_tab_2@2x.webp");
+      }
+    }
+
+    &--insurance.tab--no-webp::after {
       background-image: url("../../img/tablet_tab_3.jpg");
 
       @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
@@ -153,11 +213,27 @@
       }
     }
 
-    &--online::after {
+    &--insurance.tab--webp::after {
+      background-image: url("../../img/tablet_tab_3.webp");
+
+      @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+      background-image: url("../../img/tablet_tab_3@2x.webp");
+      }
+    }
+
+    &--online.tab--no-webp::after {
       background-image: url("../../img/tablet_tab_4.jpg");
 
       @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
         background-image: url("../../img/tablet_tab_4@2x.jpg");
+      }
+    }
+
+    &--online.tab--webp::after {
+      background-image: url("../../img/tablet_tab_4.webp");
+
+      @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+      background-image: url("../../img/tablet_tab_4@2x.webp");
       }
     }
   }
@@ -212,7 +288,7 @@
       }
     }
 
-    &--deposits::after {
+    &--deposits.tab--no-webp::after {
       background-image: url("../../img/mobile_tab_1.jpg");
 
       @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
@@ -220,7 +296,15 @@
       }
     }
 
-    &--credits::after {
+    &--deposits.tab--webp::after {
+      background-image: url("../../img/mobile_tab_1.webp");
+
+      @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+      background-image: url("../../img/mobile_tab_1@2x.webp");
+      }
+    }
+
+    &--credits.tab--no-webp::after {
       background-image: url("../../img/mobile_tab_2.jpg");
 
       @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
@@ -228,7 +312,15 @@
       }
     }
 
-    &--insurance::after {
+    &--credits.tab--webp::after {
+      background-image: url("../../img/mobile_tab_2.webp");
+
+      @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+      background-image: url("../../img/mobile_tab_2@2x.webp");
+      }
+    }
+
+    &--insurance.tab--no-webp::after {
       background-image: url("../../img/mobile_tab_3.jpg");
 
       @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
@@ -236,11 +328,27 @@
       }
     }
 
-    &--online::after {
+    &--insurance.tab--webp::after {
+      background-image: url("../../img/mobile_tab_3.webp");
+
+      @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+      background-image: url("../../img/mobile_tab_3@2x.webp");
+      }
+    }
+
+    &--online.tab--no-webp::after {
       background-image: url("../../img/mobile_tab_4.jpg");
 
       @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
         background-image: url("../../img/mobile_tab_4@2x.jpg");
+      }
+    }
+
+    &--online.tab--webp::after {
+      background-image: url("../../img/mobile_tab_4.webp");
+
+      @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+      background-image: url("../../img/mobile_tab_4@2x.webp");
       }
     }
   }

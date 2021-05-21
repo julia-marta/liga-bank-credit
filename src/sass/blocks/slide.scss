@@ -15,26 +15,59 @@
 }
 
 .slide--1 .slide__wrapper {
-  background-image: url("../../img/desktop_slide_1.jpg");
 
-  @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
-  background-image: url("../../img/desktop_slide_1@2x.jpg");
+  &--no-webp {
+    background-image: url("../../img/desktop_slide_1.jpg");
+
+    @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+    background-image: url("../../img/desktop_slide_1@2x.jpg");
+    }
+  }
+
+  &--webp {
+    background-image: url("../../img/desktop_slide_1.webp");
+
+    @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+      background-image: url("../../img/desktop_slide_1@2x.webp");
+    }
   }
 }
 
 .slide--2 .slide__wrapper {
-  background-image: url("../../img/desktop_slide_2.jpg");
 
-  @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
-  background-image: url("../../img/desktop_slide_2@2x.jpg");
+  &--no-webp {
+    background-image: url("../../img/desktop_slide_2.jpg");
+
+    @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+    background-image: url("../../img/desktop_slide_2@2x.jpg");
+    }
+  }
+
+  &--webp {
+    background-image: url("../../img/desktop_slide_2.webp");
+
+    @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+      background-image: url("../../img/desktop_slide_2@2x.webp");
+    }
   }
 }
 
 .slide--3 .slide__wrapper {
-  background-image: url("../../img/desktop_slide_3.jpg");
 
-  @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
-  background-image: url("../../img/desktop_slide_3@2x.jpg");
+  &--no-webp {
+    background-image: url("../../img/desktop_slide_3.jpg");
+
+    @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+    background-image: url("../../img/desktop_slide_3@2x.jpg");
+    }
+  }
+
+  &--webp {
+    background-image: url("../../img/desktop_slide_3.webp");
+
+    @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+      background-image: url("../../img/desktop_slide_3@2x.webp");
+    }
   }
 }
 
@@ -90,26 +123,59 @@
 @media (max-width: $max-tablet-width) {
 
   .slide--1 .slide__wrapper {
-    background-image: url("../../img/tablet_slide_1.jpg");
 
-    @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
-    background-image: url("../../img/tablet_slide_1@2x.jpg");
+    &--no-webp {
+      background-image: url("../../img/tablet_slide_1.jpg");
+
+      @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+      background-image: url("../../img/tablet_slide_1@2x.jpg");
+      }
+    }
+
+    &--webp {
+      background-image: url("../../img/tablet_slide_1.webp");
+
+      @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+        background-image: url("../../img/tablet_slide_1@2x.webp");
+      }
     }
   }
 
   .slide--2 .slide__wrapper {
-    background-image: url("../../img/tablet_slide_2.jpg");
 
-    @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
-    background-image: url("../../img/tablet_slide_2@2x.jpg");
+    &--no-webp {
+      background-image: url("../../img/tablet_slide_2.jpg");
+
+      @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+      background-image: url("../../img/tablet_slide_2@2x.jpg");
+      }
+    }
+
+    &--webp {
+      background-image: url("../../img/tablet_slide_2.webp");
+
+      @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+        background-image: url("../../img/tablet_slide_2@2x.webp");
+      }
     }
   }
 
   .slide--3 .slide__wrapper {
-    background-image: url("../../img/tablet_slide_3.jpg");
 
-    @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
-    background-image: url("../../img/tablet_slide_3@2x.jpg");
+    &--no-webp {
+      background-image: url("../../img/tablet_slide_3.jpg");
+
+      @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+      background-image: url("../../img/tablet_slide_3@2x.jpg");
+      }
+    }
+
+    &--webp {
+      background-image: url("../../img/tablet_slide_3.webp");
+
+      @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+        background-image: url("../../img/tablet_slide_3@2x.webp");
+      }
     }
   }
 
@@ -147,26 +213,59 @@
 @media (max-width: $max-mobile-width) {
 
   .slide--1 .slide__wrapper {
-    background-image: url("../../img/mobile_slide_1.jpg");
 
-    @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
-    background-image: url("../../img/mobile_slide_1@2x.jpg");
+    &--no-webp {
+      background-image: url("../../img/mobile_slide_1.jpg");
+
+      @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+      background-image: url("../../img/mobile_slide_1@2x.jpg");
+      }
+    }
+
+    &--webp {
+      background-image: url("../../img/mobile_slide_1.webp");
+
+      @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+        background-image: url("../../img/mobile_slide_1@2x.webp");
+      }
     }
   }
 
   .slide--2 .slide__wrapper {
-    background-image: url("../../img/mobile_slide_2.jpg");
 
-    @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
-    background-image: url("../../img/mobile_slide_2@2x.jpg");
+    &--no-webp {
+      background-image: url("../../img/mobile_slide_2.jpg");
+
+      @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+      background-image: url("../../img/mobile_slide_2@2x.jpg");
+      }
+    }
+
+    &--webp {
+      background-image: url("../../img/mobile_slide_2.webp");
+
+      @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+        background-image: url("../../img/mobile_slide_2@2x.webp");
+      }
     }
   }
 
   .slide--3 .slide__wrapper {
-    background-image: url("../../img/mobile_slide_3.jpg");
 
-    @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
-    background-image: url("../../img/mobile_slide_3@2x.jpg");
+    &--no-webp {
+      background-image: url("../../img/mobile_slide_3.jpg");
+
+      @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+      background-image: url("../../img/mobile_slide_3@2x.jpg");
+      }
+    }
+
+    &--webp {
+      background-image: url("../../img/mobile_slide_3.webp");
+
+      @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+        background-image: url("../../img/mobile_slide_3@2x.webp");
+      }
     }
   }
 

@@ -19,14 +19,16 @@ const Footer = ({isMobile, isTablet}) => {
 
   return (
     <footer className="footer">
-      <div className="footer__wrapper container">
-        {isDesktop? <div className="footer__item">
-          {LogoAndCopyright}
-        </div> : LogoAndCopyright}
+      <div className="container">
+        <div className="footer__wrapper container__wrapper">
+          {isDesktop? <div className="footer__item">
+            {LogoAndCopyright}
+          </div> : LogoAndCopyright}
 
-        <NavigationFooter />
-        <Contacts />
-        <Social />
+          <NavigationFooter />
+          <Contacts />
+          <Social />
+        </div>
       </div>
     </footer>
   );

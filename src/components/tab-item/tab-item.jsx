@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import Icon from "../icon/icon";
 import {IconType} from "../../const";
 
-const TabItem = ({className, data}) => {
+const TabItem = ({className, data, isWebP}) => {
 
   return (
-    <div className={`services__tab tab tab--${className}`}>
+    <div className={`services__tab tab tab--${className} ${isWebP ? `tab--webp` : `tab--no-webp`}`}>
       <div className="tab__wrapper">
         <p className="tab__title">{data.title}</p>
         <ul className="tab__features">

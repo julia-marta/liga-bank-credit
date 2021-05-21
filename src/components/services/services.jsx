@@ -6,26 +6,28 @@ import {Service, Tab} from "../../const";
 
 const {DEPOSITS, CREDITS, INSURANCE, ONLINE} = Tab;
 
-const Services = ({isSwipeable}) => {
+const Services = ({isSwipeable, isWebPSupport}) => {
 
   return (
     <section className="services">
       <h2 className="visually-hidden">Услуги банка</h2>
-        <div className="services__wrapper container">
-          <Tabs isSwipeable={isSwipeable} renderTab={(activeTab) => {
-              switch (activeTab) {
-                case DEPOSITS.index:
-                  return <TabItem className={DEPOSITS.name} data={Service.DEPOSITS} />;
-                case CREDITS.index:
-                  return <TabItem className={CREDITS.name} data={Service.CREDITS} />;
-                case INSURANCE.index:
-                  return <TabItem className={INSURANCE.name} data={Service.INSURANCE} />;
-                case ONLINE.index:
-                  return <TabItem className={ONLINE.name} data={Service.ONLINE} />;
-                default:
-                  return null;
-              }
-            }} />
+        <div className="container">
+          <div className="services__wrapper container__wrapper">
+            <Tabs isSwipeable={isSwipeable} renderTab={(activeTab) => {
+                switch (activeTab) {
+                  case DEPOSITS.index:
+                    return <TabItem className={DEPOSITS.name} data={Service.DEPOSITS} isWebP={isWebPSupport} />;
+                  case CREDITS.index:
+                    return <TabItem className={CREDITS.name} data={Service.CREDITS} isWebP={isWebPSupport} />;
+                  case INSURANCE.index:
+                    return <TabItem className={INSURANCE.name} data={Service.INSURANCE} isWebP={isWebPSupport} />;
+                  case ONLINE.index:
+                    return <TabItem className={ONLINE.name} data={Service.ONLINE} isWebP={isWebPSupport} />;
+                  default:
+                    return null;
+                }
+              }} />
+          </div>
         </div>
     </section>
   );
@@ -33,6 +35,7 @@ const Services = ({isSwipeable}) => {
 
 Services.propTypes = {
   isSwipeable: PropTypes.bool.isRequired,
+  isWebPSupport: PropTypes.bool.isRequired,
 };
 
 export default Services;

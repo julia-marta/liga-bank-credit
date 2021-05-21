@@ -71,23 +71,25 @@ const Calculator = ({
 
   return (
     <section id="calculator" className="calculator">
-      <div className="calculator__wrapper container">
-        <h2 className="calculator__title">Кредитный калькулятор</h2>
-        <form action="#" className="calculator__form form" onSubmit={handleFormSubmit}>
-          <div className="calculator__steps-wrapper">
-            <StepOne creditPurpose={purpose} onChangePurpose={handleCreditSelect} />
+      <div className="container">
+        <div className="calculator__wrapper container__wrapper">
+          <h2 className="calculator__title">Кредитный калькулятор</h2>
+          <form action="#" className="calculator__form form" onSubmit={handleFormSubmit}>
+            <div className="calculator__steps-wrapper">
+              <StepOne creditPurpose={purpose} onChangePurpose={handleCreditSelect} />
 
-            {purpose && <StepTwo creditPurpose={purpose} />}
-          </div>
-          {purpose &&
-            <Offer propertyValue={propertyValue} initialFee={initialFee} creditTerm={creditTerm}
-            isMaternalCapital={isMaternalCapital} isComprehensive={isComprehensive} isInsurance={isInsurance}
-            creditPurpose={purpose} onClickCheckout={setCheckout} onChangeData={closeApplicationForm} />}
+              {purpose && <StepTwo creditPurpose={purpose} />}
+            </div>
+            {purpose &&
+              <Offer propertyValue={propertyValue} initialFee={initialFee} creditTerm={creditTerm}
+              isMaternalCapital={isMaternalCapital} isComprehensive={isComprehensive} isInsurance={isInsurance}
+              creditPurpose={purpose} onClickCheckout={setCheckout} onChangeData={closeApplicationForm} />}
 
-          {isCheckout &&
-          <StepThree propertyValue={propertyValue} initialFee={initialFee} creditTerm={creditTerm} purpose={purpose}
-            purposeName={purposeName} isErrorsVisible={isErrorsVisible} setErrors={setErrors} setErrorsVisible={setErrorsVisible} />}
-        </form>
+            {isCheckout &&
+            <StepThree propertyValue={propertyValue} initialFee={initialFee} creditTerm={creditTerm} purpose={purpose}
+              purposeName={purposeName} isErrorsVisible={isErrorsVisible} setErrors={setErrors} setErrorsVisible={setErrorsVisible} />}
+          </form>
+        </div>
       </div>
     </section>
   );

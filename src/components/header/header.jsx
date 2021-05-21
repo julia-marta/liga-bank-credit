@@ -13,6 +13,14 @@ const Header = ({onLoginButtonClick, isMobile, isTablet}) => {
     }
   }, [isMobile]);
 
+  useEffect(() => {
+    if (isMenuOpened) {
+      document.body.style.overflow = `hidden`;
+    } else {
+      document.body.style.overflow = `auto`;
+    }
+  });
+
   const handleBurgerMenuClick = useCallback(
     (evt) => {
       evt.preventDefault();
@@ -29,17 +37,19 @@ const Header = ({onLoginButtonClick, isMobile, isTablet}) => {
 
   return (
     <header className="header">
-      <div className="header__wrapper container">
-        <div className="header__top">
-          {isMobile && <button className="header__hamburger-menu" type="button" aria-label="Открыть меню"
-          onClick={handleBurgerMenuClick}></button>}
-          <Logo name={`header`} type={isMobile ? `mobile` : ``} />
-          {isMobile && isMenuOpened && <button className="header__close-menu" type="button" aria-label="Закрыть меню"
-          onClick={handleCloseButtonClick}></button>}
-        </div>
-        <div className="header__navigation">
-          <Navigation isCompactMenu={isTablet} isMobileMenu={isMobile} isMenuOpened={isMenuOpened}
-          onLoginButtonClick={onLoginButtonClick} />
+      <div className="container">
+        <div className="header__wrapper container__wrapper">
+          <div className="header__top">
+            {isMobile && <button className="header__hamburger-menu" type="button" aria-label="Открыть меню"
+            onClick={handleBurgerMenuClick}></button>}
+            <Logo name={`header`} type={isMobile ? `mobile` : ``} />
+            {isMobile && isMenuOpened && <button className="header__close-menu" type="button" aria-label="Закрыть меню"
+            onClick={handleCloseButtonClick}></button>}
+          </div>
+          <div className="header__navigation">
+            <Navigation isCompactMenu={isTablet} isMobileMenu={isMobile} isMenuOpened={isMenuOpened}
+            onLoginButtonClick={onLoginButtonClick} />
+          </div>
         </div>
       </div>
     </header>

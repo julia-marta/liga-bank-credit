@@ -90,7 +90,7 @@
     background-color: $background;
 
     &--opened {
-      min-height: 640px;
+      height: 100%;
       padding-top: 30.5px;
     }
   }
@@ -103,7 +103,7 @@
     display: block;
     position: absolute;
     top: -32.5px;
-    right: 15px;
+    right: 4.65%;
     width: 14px;
     height: auto;
     border: none;

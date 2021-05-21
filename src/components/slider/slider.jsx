@@ -5,7 +5,7 @@ import Slide from "../slide/slide";
 import Dot from "../dot/dot";
 import {SLIDES, SLIDER_INTERVAL, SLIDER_TRANSITION, SLIDER_TRANSLATE} from "../../const";
 
-const Slider = ({isSwipeable}) => {
+const Slider = ({isSwipeable, isWebPSupport}) => {
 
   const [current, setCurrent] = useState({
     activeSlide: 1,
@@ -78,8 +78,8 @@ const Slider = ({isSwipeable}) => {
       style={{transform: `translateX(${translate}px)`, transition: `transform ease-out ${transition}s`}}
       onTransitionEnd={handleSliderTransition} {...handlers}>
         {slides.map((slide, index) => {
-            return <Slide key={index + 1} index={slide.index} text={slide.text} button={slide.button} />
-          })}
+          return <Slide key={index + 1} index={slide.index} text={slide.text} button={slide.button} isWebP={isWebPSupport} />
+        })}
       </div>
       <div className="slider__dots dots">
         {slides.map((_slide, index) => {
@@ -92,6 +92,7 @@ const Slider = ({isSwipeable}) => {
 
 Slider.propTypes = {
   isSwipeable: PropTypes.bool.isRequired,
+  isWebPSupport: PropTypes.bool.isRequired,
 };
 
 export default Slider;
