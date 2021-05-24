@@ -92,6 +92,9 @@
     &--opened {
       height: 100%;
       padding-top: 30.5px;
+      flex-wrap: nowrap;
+      max-height: calc(100vh - 48px);
+      overflow: hidden auto;
     }
   }
 
