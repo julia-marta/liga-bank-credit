@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/liga-bank-credit/static/css/main.290c554d.chunk.css",
+    "main.js": "/liga-bank-credit/static/js/main.4bcff46e.chunk.js",
+    "main.js.map": "/liga-bank-credit/static/js/main.4bcff46e.chunk.js.map",
+    "runtime-main.js": "/liga-bank-credit/static/js/runtime-main.51206711.js",
+    "runtime-main.js.map": "/liga-bank-credit/static/js/runtime-main.51206711.js.map",
+    "static/js/2.e843466c.chunk.js": "/liga-bank-credit/static/js/2.e843466c.chunk.js",
+    "static/js/2.e843466c.chunk.js.map": "/liga-bank-credit/static/js/2.e843466c.chunk.js.map",
+    "index.html": "/liga-bank-credit/index.html",
+    "static/css/main.290c554d.chunk.css.map": "/liga-bank-credit/static/css/main.290c554d.chunk.css.map",
+    "static/js/2.e843466c.chunk.js.LICENSE.txt": "/liga-bank-credit/static/js/2.e843466c.chunk.js.LICENSE.txt",
+    "static/media/style.scss": "/liga-bank-credit/static/media/tablet_tab_4@2x.webp"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.51206711.js",
+    "static/js/2.e843466c.chunk.js",
+    "static/css/main.290c554d.chunk.css",
+    "static/js/main.4bcff46e.chunk.js"
+  ]
+}
