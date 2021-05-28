@@ -1,4 +1,5 @@
 {
+  "homepage": "https://julia-marta.github.io/liga-bank-credit",
   "name": "liga-bank-credit",
   "version": "0.1.0",
   "private": true,
@@ -79,6 +80,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "node scripts/test.js"
   },
   "eslintConfig": {
@@ -154,5 +157,7 @@
       "react-app"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "gh-pages": "3.2.0"
+  }
 }
